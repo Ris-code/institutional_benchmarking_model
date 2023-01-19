@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>937</width>
-    <height>519</height>
+    <height>479</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -21,19 +21,19 @@
     <property name="geometry">
      <rect>
       <x>0</x>
-      <y>40</y>
+      <y>50</y>
       <width>941</width>
       <height>41</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Times New Roman</family>
+      <family>Cambria</family>
       <pointsize>20</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>RISK SCALING</string>
+     <string>RISK ASSESSMENT</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -44,7 +44,7 @@
      <rect>
       <x>0</x>
       <y>110</y>
-      <width>941</width>
+      <width>951</width>
       <height>51</height>
      </rect>
     </property>
@@ -55,7 +55,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Enter the scaling for the Risk Units:- </string>
+     <string>Enter the values for the following parameters:- </string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -64,10 +64,10 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>190</y>
-      <width>391</width>
-      <height>141</height>
+      <x>240</x>
+      <y>180</y>
+      <width>451</width>
+      <height>111</height>
      </rect>
     </property>
     <property name="font">
@@ -92,31 +92,13 @@
       <number>5</number>
      </property>
      <property name="horizontalSpacing">
-      <number>7</number>
+      <number>10</number>
      </property>
      <property name="verticalSpacing">
       <number>12</number>
      </property>
-     <item row="0" column="0">
-      <widget class="QLabel" name="label_3">
-       <property name="font">
-        <font>
-         <family>Arial</family>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Low =</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="0" column="1">
-      <widget class="QLineEdit" name="riskLow">
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="paramK">
        <property name="font">
         <font>
          <family>Arial</family>
@@ -130,7 +112,22 @@
        </property>
       </widget>
      </item>
-     <item row="1" column="0">
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="paramJ">
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>12</pointsize>
+         <weight>50</weight>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:rgb(255, 255, 255)</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="0">
       <widget class="QLabel" name="label_2">
        <property name="font">
         <font>
@@ -141,30 +138,15 @@
         </font>
        </property>
        <property name="text">
-        <string>Medium =</string>
+        <string>Extra time (in days)</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
       </widget>
      </item>
-     <item row="1" column="1">
-      <widget class="QLineEdit" name="riskMedium">
-       <property name="font">
-        <font>
-         <family>Arial</family>
-         <pointsize>12</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color:rgb(255, 255, 255)</string>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="0">
-      <widget class="QLabel" name="label_4">
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_3">
        <property name="font">
         <font>
          <family>Arial</family>
@@ -174,58 +156,10 @@
         </font>
        </property>
        <property name="text">
-        <string>High =</string>
+        <string>Cost (in $K)</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="2" column="1">
-      <widget class="QLineEdit" name="riskHigh">
-       <property name="font">
-        <font>
-         <family>Arial</family>
-         <pointsize>12</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color:rgb(255, 255, 255)</string>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="0">
-      <widget class="QLabel" name="label_6">
-       <property name="font">
-        <font>
-         <family>Arial</family>
-         <pointsize>14</pointsize>
-         <weight>75</weight>
-         <bold>true</bold>
-        </font>
-       </property>
-       <property name="text">
-        <string>Complex =</string>
-       </property>
-       <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-       </property>
-      </widget>
-     </item>
-     <item row="3" column="1">
-      <widget class="QLineEdit" name="riskComplex">
-       <property name="font">
-        <font>
-         <family>Arial</family>
-         <pointsize>12</pointsize>
-         <weight>50</weight>
-         <bold>false</bold>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color:rgb(255, 255, 255)</string>
        </property>
       </widget>
      </item>
@@ -235,9 +169,9 @@
     <property name="geometry">
      <rect>
       <x>290</x>
-      <y>380</y>
+      <y>340</y>
       <width>371</width>
-      <height>28</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="font">

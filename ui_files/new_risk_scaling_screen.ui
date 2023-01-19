@@ -33,7 +33,7 @@
      </font>
     </property>
     <property name="text">
-     <string>RISK SCALING</string>
+     <string>BUSINESS IMPACT SCALING</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -42,7 +42,7 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>0</x>
+      <x>-220</x>
       <y>110</y>
       <width>941</width>
       <height>51</height>
@@ -55,7 +55,7 @@
      </font>
     </property>
     <property name="text">
-     <string>Enter the scaling for the Risk Units:- </string>
+     <string>Enter the scaling for the Business Impact:- </string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
@@ -64,7 +64,7 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>50</x>
       <y>190</y>
       <width>391</width>
       <height>141</height>
@@ -234,7 +234,7 @@
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>70</x>
       <y>380</y>
       <width>371</width>
       <height>28</height>
@@ -283,6 +283,25 @@
       </widget>
      </item>
     </layout>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>170</y>
+      <width>401</width>
+      <height>171</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+    <property name="pixmap">
+     <pixmap>../../../../Desktop/matrix.png</pixmap>
+    </property>
+    <property name="scaledContents">
+     <bool>true</bool>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
