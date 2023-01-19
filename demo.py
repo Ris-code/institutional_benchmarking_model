@@ -604,10 +604,10 @@ dictionary = {
 demoApp = QApplication([])
 
 widget = QtWidgets.QStackedWidget()
-# first_window = ability_jobType_scaling_window()
+first_window = ability_jobType_scaling_window()
 
 # debugging
-first_window = risk_scaling_window()
+# first_window = name_of_window()
 
 widget.addWidget(first_window)
 # widget.setFixedHeight(700)
