@@ -2,6 +2,7 @@
 from qualityModule import *
 from managementModule import *
 from riskModule import *
+from effortModule import *
 
 # UI STUFF
 import sys
@@ -9,20 +10,21 @@ from PyQt5.QtWidgets import *
 from PyQt5 import uic
 from PyQt5 import QtWidgets, QtCore
 
+QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
+QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
+
 # for dependent comboboxes
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
-
-QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True) #enable highdpi scaling
-QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True) #use highdpi icons
 
 # counter for keeping in check the back and previous screen windows
 counter = 0
 
 
-
 # ABILITY JOB-TYPE SCALING SCREEN
-abilityEntry, abiltyIntermediate, abilityHigh, abilityExpert = map(float, [1, 1, 1, 1])
+abilityEntry, abiltyIntermediate, abilityHigh, abilityExpert \
+    = map(float, [1, 1, 1, 1])
 jobSimple, jobMedium, jobHigh, jobComplex = map(float, [1, 1, 1, 1])
+
 
 class ability_jobType_scaling_window(QMainWindow):
     def __init__(self):
@@ -38,7 +40,12 @@ class ability_jobType_scaling_window(QMainWindow):
         abilityHigh = float(self.abilityHigh.text())
         abilityExpert = float(self.abilityExpert.text())
 
-        abilityEntry, abilityIntermediate, abilityHigh, abilityExpert = map(lambda x : x/abilityEntry, [abilityEntry, abilityIntermediate, abilityHigh, abilityExpert])
+        abilityEntry, abilityIntermediate, abilityHigh, abilityExpert \
+            = map(lambda x: x/abilityEntry,
+                  [abilityEntry,
+                   abilityIntermediate,
+                   abilityHigh,
+                   abilityExpert])
 
         global jobSimple, jobMedium, jobHigh, jobComplex
         jobSimple = float(self.jobSimple.text())
@@ -46,10 +53,14 @@ class ability_jobType_scaling_window(QMainWindow):
         jobHigh = float(self.jobHigh.text())
         jobComplex = float(self.jobComplex.text())
 
-        jobSimple, jobMedium, jobHigh, jobComplex = map(lambda x : x/jobSimple, [jobSimple, jobMedium, jobHigh, jobComplex])
+        jobSimple, jobMedium, jobHigh, jobComplex \
+            = map(lambda x: x/jobSimple,
+                  [jobSimple, jobMedium, jobHigh, jobComplex])
 
-        print('Ability scaling:', abilityEntry, abiltyIntermediate, abilityHigh, abilityExpert)
-        print('JobType scaling:', jobSimple, jobMedium, jobHigh, jobComplex)
+        print('Ability scaling:',
+              abilityEntry, abiltyIntermediate, abilityHigh, abilityExpert)
+        print('JobType scaling:',
+              jobSimple, jobMedium, jobHigh, jobComplex)
 
         global counter
         if counter == 0:
@@ -57,7 +68,6 @@ class ability_jobType_scaling_window(QMainWindow):
             next_window = ability_jobType_window()
             widget.addWidget(next_window)
         widget.setCurrentIndex(widget.currentIndex() + 1)
-
 
 
 # ABILITY JOB TYPE SCREEN
@@ -95,7 +105,46 @@ class ability_jobType_window(QMainWindow):
         c3 = self.c3.text()
         c4 = self.c4.text()
 
-        s1, s2, s3, s4, m1, m2, m3, m4, h1, h2, h3, h4, c1, c2, c3, c4 = map(int, [s1, s2, s3, s4, m1, m2, m3, m4, h1, h2, h3, h4, c1, c2, c3, c4])
+        s1, s2, s3, s4, m1, m2, m3, m4, h1, h2, h3, h4, c1, c2, c3, c4 \
+            = map(int,
+                  [s1, s2, s3, s4,
+                   m1, m2, m3, m4,
+                   h1, h2, h3, h4,
+                   c1, c2, c3, c4])
+
+        global E_Simple, E_Medium, E_High, E_Complex
+        E_Simple = {
+            "Entry": E(abilityEntry, jobSimple, s1),
+            "Intermediate": E(abilityIntermediate, jobSimple, s2),
+            "High": E(abilityHigh, jobSimple, s3),
+            "Expert": E(abilityExpert, jobSimple, s4)
+            }
+        E_Medium = {
+            "Entry": E(abilityEntry, jobMedium, m1),
+            "Intermediate": E(abilityIntermediate, jobMedium, m2),
+            "High": E(abilityHigh, jobMedium, m3),
+            "Expert": E(abilityExpert, jobMedium, m4)
+            }
+        E_High = {
+            "Entry": E(abilityEntry, jobHigh, h1),
+            "Intermediate": E(abilityIntermediate, jobHigh, h2),
+            "High": E(abilityHigh, jobHigh, h3),
+            "Expert": E(abilityExpert, jobHigh, h4)
+            }
+        E_Complex = {
+            "Entry": E(abilityEntry, jobComplex, c1),
+            "Intermediate": E(abilityIntermediate, jobComplex, c2),
+            "High": E(abilityHigh, jobComplex, c3),
+            "Expert": E(abilityExpert, jobComplex, c4)
+            }
+
+        global Effort_Dict
+        Effort_Dict = {
+            'Simple': E_Simple,
+            'Medium': E_Medium,
+            'High': E_High,
+            'Complex': E_Complex
+            }
 
         global counter
         if counter == 1:
@@ -107,7 +156,6 @@ class ability_jobType_window(QMainWindow):
 
     def backScreen(self):
         widget.setCurrentIndex(widget.currentIndex() - 1)
-
 
 
 # QUALITY SCREEN
@@ -143,7 +191,6 @@ class quality_window(QMainWindow):
         widget.setCurrentIndex(widget.currentIndex() - 1)
 
 
-
 # QUALITY SCALING SCREEN
 class quality_scaling_window(QMainWindow):
     def __init__(self):
@@ -158,25 +205,57 @@ class quality_scaling_window(QMainWindow):
         qualityStandard = self.qualityStandard.text()
         qualityHigh = self.qualityHigh.text()
         qualityPremium = self.qualityPremium.text()
-        
-        qualityBasic, qualityStandard, qualityHigh, qualityPremium = map(float, [qualityBasic, qualityStandard, qualityHigh, qualityPremium])
-        qualityBasic, qualityStandard, qualityHigh, qualityPremium = map(lambda x : x/qualityBasic, [qualityBasic, qualityStandard, qualityHigh, qualityPremium])
 
-        qualityScalingFactorsArray = [qualityBasic, qualityStandard, qualityHigh, qualityPremium]
-        
+        qualityBasic, qualityStandard, qualityHigh, qualityPremium \
+            = map(float,
+                  [qualityBasic, qualityStandard, qualityHigh, qualityPremium])
+        qualityBasic, qualityStandard, qualityHigh, qualityPremium \
+            = map(lambda x: x/qualityBasic,
+                  [qualityBasic, qualityStandard, qualityHigh, qualityPremium])
+
+        qualityScalingFactorsArray = [
+            qualityBasic, qualityStandard, qualityHigh, qualityPremium
+            ]
+
         print('qualityScalingFactorsArray:', qualityScalingFactorsArray)
 
         qualityFactorsInput(qualityScalingFactorsArray)
-        
+
         # Quality Factors Mapping
         global Q_Simple, Q_Medium, Q_High, Q_Complex
-        Q_Simple = {"Entry": Q(qualityBasic, s1, Q_parameterArray), "Intermediate": Q(0.75*qualityBasic, s2, Q_parameterArray), "High": Q(0.5*qualityBasic, s3, Q_parameterArray), "Expert": Q(0.25*qualityBasic, s4, Q_parameterArray)}
-        Q_Medium = {"Entry": Q(qualityStandard, m1, Q_parameterArray), "Intermediate": Q(qualityStandard, m2, Q_parameterArray), "High": Q(qualityBasic, m3, Q_parameterArray), "Expert": Q(0.5*qualityBasic, m4, Q_parameterArray)}
-        Q_High = {"Entry": Q(qualityHigh, h1, Q_parameterArray), "Intermediate": Q(qualityHigh, h2, Q_parameterArray), "High": Q(qualityStandard, h3, Q_parameterArray), "Expert": Q(qualityBasic, h4, Q_parameterArray)}
-        Q_Complex = {"Entry": Q(qualityPremium, c1, Q_parameterArray), "Intermediate": Q(qualityPremium, c2, Q_parameterArray), "High": Q(qualityHigh, c3, Q_parameterArray), "Expert": Q(qualityStandard, c4, Q_parameterArray)}
+        Q_Simple = {
+            "Entry": Q(qualityBasic, s1, Q_parameterArray),
+            "Intermediate": Q(0.75*qualityBasic, s2, Q_parameterArray),
+            "High": Q(0.5*qualityBasic, s3, Q_parameterArray),
+            "Expert": Q(0.25*qualityBasic, s4, Q_parameterArray)
+            }
+        Q_Medium = {
+            "Entry": Q(qualityStandard, m1, Q_parameterArray),
+            "Intermediate": Q(qualityStandard, m2, Q_parameterArray),
+            "High": Q(qualityBasic, m3, Q_parameterArray),
+            "Expert": Q(0.5*qualityBasic, m4, Q_parameterArray)
+            }
+        Q_High = {
+            "Entry": Q(qualityHigh, h1, Q_parameterArray),
+            "Intermediate": Q(qualityHigh, h2, Q_parameterArray),
+            "High": Q(qualityStandard, h3, Q_parameterArray),
+            "Expert": Q(qualityBasic, h4, Q_parameterArray)
+            }
+        Q_Complex = {
+            "Entry": Q(qualityPremium, c1, Q_parameterArray),
+            "Intermediate": Q(qualityPremium, c2, Q_parameterArray),
+            "High": Q(qualityHigh, c3, Q_parameterArray),
+            "Expert": Q(qualityStandard, c4, Q_parameterArray)
+            }
+
         # Quality Output Dictionary
         global Quality_Dict
-        Quality_Dict = {'Simple': Q_Simple, 'Medium': Q_Medium, 'High': Q_High, 'Complex': Q_Complex}
+        Quality_Dict = {
+            'Simple': Q_Simple, 
+            'Medium': Q_Medium,
+            'High': Q_High,
+            'Complex': Q_Complex
+            }
 
         global counter
         if counter == 3:
@@ -188,7 +267,6 @@ class quality_scaling_window(QMainWindow):
 
     def backScreen(self):
         widget.setCurrentIndex(widget.currentIndex() - 1)
-
 
 
 # MANAGEMENT SCREEN
@@ -225,7 +303,6 @@ class management_window(QMainWindow):
         widget.setCurrentIndex(widget.currentIndex() - 1)
 
 
-
 # MANAGEMENT SCALING SCREEN
 class management_scaling_window(QMainWindow):
     def __init__(self):
@@ -240,10 +317,15 @@ class management_scaling_window(QMainWindow):
         managementMedium = self.managementMedium.text()
         managementHigh = self.managementHigh.text()
 
-        managementLow, managementMedium, managementHigh = map(float, [managementLow, managementMedium, managementHigh])
-        managementLow, managementMedium, managementHigh = map(lambda x : x/managementLow, [managementLow, managementMedium, managementHigh])
+        managementLow, managementMedium, managementHigh \
+            = map(float,
+                  [managementLow, managementMedium, managementHigh])
+        managementLow, managementMedium, managementHigh \
+            = map(lambda x: x/managementLow,
+                  [managementLow, managementMedium, managementHigh])
 
-        managementScalingFactorsArray = [managementLow, managementMedium, managementHigh]
+        managementScalingFactorsArray \
+            = [managementLow, managementMedium, managementHigh]
 
         print('managementScalingFactorsArray:', managementScalingFactorsArray)
 
@@ -251,14 +333,35 @@ class management_scaling_window(QMainWindow):
         
         # Management Factors Mapping
         global M_Simple, M_Medium, M_High, M_Complex
-        M_Simple = {"Entry": M(managementLow, s1, M_parameterArray), "Intermediate": M(managementLow, s2, M_parameterArray)}
-        M_Medium = {"Entry": M(managementMedium, m1, M_parameterArray), "Intermediate": M(managementMedium, m2, M_parameterArray), "High": M(managementLow, m3, M_parameterArray), "Expert": M(managementLow, m4, M_parameterArray)}
-        M_High = {"Entry": M(managementHigh, h1, M_parameterArray), "Intermediate": M(managementHigh, h2, M_parameterArray), "High": M(managementMedium, h3, M_parameterArray), "Expert": M(managementLow, h4, M_parameterArray)}
-        M_Complex = {"High": M(managementHigh, c3, M_parameterArray), "Expert": M(managementHigh, c4, M_parameterArray)}
+        M_Simple = {
+            "Entry": M(managementLow, s1, M_parameterArray),
+            "Intermediate": M(managementLow, s2, M_parameterArray)
+            }
+        M_Medium = {
+            "Entry": M(managementMedium, m1, M_parameterArray),
+            "Intermediate": M(managementMedium, m2, M_parameterArray),
+            "High": M(managementLow, m3, M_parameterArray),
+            "Expert": M(managementLow, m4, M_parameterArray)
+            }
+        M_High = {
+            "Entry": M(managementHigh, h1, M_parameterArray),
+            "Intermediate": M(managementHigh, h2, M_parameterArray),
+            "High": M(managementMedium, h3, M_parameterArray),
+            "Expert": M(managementLow, h4, M_parameterArray)
+            }
+        M_Complex = {
+            "High": M(managementHigh, c3, M_parameterArray),
+            "Expert": M(managementHigh, c4, M_parameterArray)
+            }
 
         # Management Output Dictionary
         global Management_Dict
-        Management_Dict = {'Simple': M_Simple, 'Medium': M_Medium, 'High': M_High, 'Complex': M_Complex}
+        Management_Dict = {
+            'Simple': M_Simple,
+            'Medium': M_Medium,
+            'High': M_High,
+            'Complex': M_Complex
+            }
 
         global counter
         if counter == 5:
@@ -272,12 +375,11 @@ class management_scaling_window(QMainWindow):
         widget.setCurrentIndex(widget.currentIndex() - 1)
 
 
-
 # RISK SCREEN
 class risk_window(QMainWindow):
     def __init__(self):
         super(risk_window, self).__init__()
-        uic.loadUi('ui_files/risk_screen.ui', self)
+        uic.loadUi('ui_files/new_risk_screen.ui', self)
 
         self.nextButton.clicked.connect(self.nextScreen)
         self.backButton.clicked.connect(self.backScreen)
@@ -285,11 +387,10 @@ class risk_window(QMainWindow):
     def nextScreen(self):
         J = self.paramJ.text()
         K = self.paramK.text()
-        L = self.paramL.text()
-        J, K, L = map(float, [J, K, L])
+        J, K = map(float, [J, K])
 
         global R_parameterArray
-        R_parameterArray = [J, K, L]
+        R_parameterArray = [J, K]
 
         print('R_parameterArray:', R_parameterArray)
 
@@ -305,12 +406,11 @@ class risk_window(QMainWindow):
         widget.setCurrentIndex(widget.currentIndex() - 1)
 
 
-
 # RISK SCALING SCREEN
 class risk_scaling_window(QMainWindow):
     def __init__(self):
         super(risk_scaling_window, self).__init__()
-        uic.loadUi('ui_files/risk_scaling_screen.ui', self)
+        uic.loadUi('ui_files/new_risk_scaling_screen.ui', self)
 
         self.nextButton.clicked.connect(self.nextScreen)
         self.backButton.clicked.connect(self.backScreen)
@@ -321,25 +421,48 @@ class risk_scaling_window(QMainWindow):
         riskHigh = self.riskHigh.text()
         riskComplex = self.riskComplex.text()
 
-        riskLow, riskMedium, riskHigh, riskComplex = map(float, [riskLow, riskMedium, riskHigh, riskComplex])
-        riskLow, riskMedium, riskHigh, riskComplex = map(lambda x : x/riskLow, [riskLow, riskMedium, riskHigh, riskComplex])
+        riskLow, riskMedium, riskHigh, riskComplex \
+            = map(float,
+                  [riskLow, riskMedium, riskHigh, riskComplex])
+        riskLow, riskMedium, riskHigh, riskComplex \
+            = map(lambda x: x/riskLow,
+                  [riskLow, riskMedium, riskHigh, riskComplex])
 
         riskScalingFactorsArray = [riskLow, riskMedium, riskHigh, riskComplex]
 
         print('riskScalingFactorsArray:', riskScalingFactorsArray)
 
         riskFactorsInput(riskScalingFactorsArray)
-        
+
         # Risk Factors Mapping
-        global R_Low, R_Medium, R_High, R_Undefined
-        R_Low = {"Simple": R(riskLow, R_parameterArray)}
-        R_Medium = {"Simple": R(riskLow, R_parameterArray), "Medium": R(riskLow, R_parameterArray), "High": R(riskMedium, R_parameterArray)}
-        R_High = {"Simple": R(riskMedium, R_parameterArray), "Medium": R(riskMedium, R_parameterArray), "High": R(riskHigh, R_parameterArray), "NA": R(riskComplex, R_parameterArray)}
-        R_Undefined = {"NA": R(riskComplex, R_parameterArray)}
+        global R_Low, R_Medium, R_High, R_NA
+        R_Low = {
+            "Simple": R(riskLow, R_parameterArray)
+            }
+        R_Medium = {
+            "Simple": R(riskLow, R_parameterArray),
+            "Medium": R(riskLow, R_parameterArray)
+            }
+        R_High = {
+            "Simple": R(riskMedium, R_parameterArray),
+            "Medium": R(riskMedium, R_parameterArray),
+            "High": R(riskHigh, R_parameterArray)
+            }
+        R_NA = {
+            "Simple": R(riskComplex, R_parameterArray),
+            "Medium": R(riskComplex, R_parameterArray),
+            "High": R(riskComplex, R_parameterArray),
+            "NA": R(riskComplex, R_parameterArray)
+            }
 
         # Risk Output Dictionary
         global Risk_Dict
-        Risk_Dict = {'Low': R_Low, 'Medium': R_Medium, 'High': R_High, 'Undefined': R_Undefined}
+        Risk_Dict = {
+            'Low': R_Low,
+            'Medium': R_Medium,
+            'High': R_High,
+            'NA': R_NA
+            }
 
         global counter
         if counter == 7:
@@ -351,7 +474,6 @@ class risk_scaling_window(QMainWindow):
 
     def backScreen(self):
         widget.setCurrentIndex(widget.currentIndex() - 1)
-
 
 
 # OUTPUT SCREEN
@@ -378,9 +500,9 @@ class output_drop_down_window(QMainWindow):
             for param1_key in factor_key_dict.keys():
                 PARAM1 = QStandardItem(param1_key)
                 FACTOR.appendRow(PARAM1)
-                
+
                 param1_array = factor_key_dict.get(param1_key)
-                
+
                 for value in param1_array:
                     PARAM2 = QStandardItem(value)
                     PARAM1.appendRow(PARAM2)
@@ -396,7 +518,11 @@ class output_drop_down_window(QMainWindow):
         self.generateButton.clicked.connect(self.generateOutput)
 
     def labelUpdate(self):
-        if self.factors.currentText() == "Quality" or self.factors.currentText() == "Management":
+        if self.factors.currentText() == "Quality" \
+                or \
+                self.factors.currentText() == "Management" \
+                or \
+                self.factors.currentText() == "Effort":
             self.paramLabel1.setText('Job Type')
             self.paramLabel2.setText('Ability')
         elif self.factors.currentText() == "Risk":
@@ -404,64 +530,84 @@ class output_drop_down_window(QMainWindow):
             self.paramLabel2.setText('Mitigation Options')
 
     def updateParam1Combo(self, index):
-        model_index = self.model.index(index, 0, self.factors.rootModelIndex())
+        model_index = self.model.index(
+            index, 0, self.factors.rootModelIndex()
+            )
         self.parameters1.setRootModelIndex(model_index)
         self.parameters1.setCurrentIndex(0)
         self.parameters1.currentIndexChanged.connect(self.updateParam2Combo)
         self.updateParam2Combo(0)
 
     def updateParam2Combo(self, index):
-        model_index = self.model.index(index, 0, self.parameters1.rootModelIndex())
+        model_index = self.model.index(
+            index, 0, self.parameters1.rootModelIndex()
+            )
         self.parameters2.setRootModelIndex(model_index)
         self.parameters2.setCurrentIndex(0)
 
     def generateOutput(self):
-        # output_text = self.factors.currentText() + " " + self.parameters1.currentText() + " " + self.parameters2.currentText()
+        # output_text = self.factors.currentText() + " " \
+        #   + self.parameters1.currentText() + " " \
+        #   + self.parameters2.currentText()
         # self.outputDataLabel.setText(output_text)
-        
+
         # OUTPUT DICTIONARY
-        output_dictionary = {'Quality': Quality_Dict, 'Management': Management_Dict, 'Risk': Risk_Dict}
-        output_text = output_dictionary[self.factors.currentText()][self.parameters1.currentText()][self.parameters2.currentText()]
-        self.outputDataLabel.setText(f'{output_text:.2f}' + " " + str(self.factors.currentText()) + " units") 
-        
+        output_dictionary = {
+            'Quality': Quality_Dict,
+            'Management': Management_Dict,
+            'Risk': Risk_Dict,
+            'Effort': Effort_Dict
+            }
+        output_text \
+            = output_dictionary\
+            [self.factors.currentText()]\
+            [self.parameters1.currentText()]\
+            [self.parameters2.currentText()]
+        self.outputDataLabel.setText(
+            f'{output_text:.2f}' + " " \
+                + str(self.factors.currentText()) + " units"
+            )
+
     def backScreen(self):
         widget.setCurrentIndex(widget.currentIndex() - 1)
 
-    
 
 # FACTORS & PARAMETERS DICTIONARY
 dictionary = {
-    'Quality':
-        {'Simple': ['Entry', 'Intermediate', 'High', 'Expert'],
+    'Quality': {
+        'Simple': ['Entry', 'Intermediate', 'High', 'Expert'],
         'Medium': ['Entry', 'Intermediate', 'High', 'Expert'],
         'High': ['Entry', 'Intermediate', 'High', 'Expert'],
         'Complex': ['Entry', 'Intermediate', 'High', 'Expert']
-    },
-
-    'Management':{
+        },
+    'Management': {
         'Simple': ['Entry', 'Intermediate'],
         'Medium': ['Entry', 'Intermediate', 'High', 'Expert'],
         'High': ['Entry', 'Intermediate', 'High', 'Expert'],
         'Complex': ['High', 'Expert']
-    },
-
-    'Risk':{
+        },
+    'Risk': {
         'Low': ['Simple'],
-        'Medium': ['Simple', 'Medium', 'High'],
-        'High': ['Simple', 'Medium', 'High', 'NA'],
-        'Undefined': ['NA']
+        'Medium': ['Simple', 'Medium'],
+        'High': ['Simple', 'Medium', 'High'],
+        'NA': ['Simple', 'Medium', 'High', 'NA']
+        },
+    'Effort': {
+        'Simple': ['Entry', 'Intermediate', 'High', 'Expert'],
+        'Medium': ['Entry', 'Intermediate', 'High', 'Expert'],
+        'High': ['Entry', 'Intermediate', 'High', 'Expert'],
+        'Complex': ['Entry', 'Intermediate', 'High', 'Expert']
     }
 }
-
 
 
 demoApp = QApplication([])
 
 widget = QtWidgets.QStackedWidget()
-first_window = ability_jobType_scaling_window()
+# first_window = ability_jobType_scaling_window()
 
-# CHECK
-# first_window = output_drop_down_window()
+# debugging
+first_window = risk_scaling_window()
 
 widget.addWidget(first_window)
 # widget.setFixedHeight(700)
