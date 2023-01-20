@@ -297,7 +297,7 @@
      <string/>
     </property>
     <property name="pixmap">
-     <pixmap>../../../../Desktop/matrix.png</pixmap>
+     <pixmap>../image_files/business_impact_matrix.png</pixmap>
     </property>
     <property name="scaledContents">
      <bool>true</bool>

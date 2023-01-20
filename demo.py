@@ -31,7 +31,31 @@ class ability_jobType_scaling_window(QMainWindow):
         super(ability_jobType_scaling_window, self).__init__()
         uic.loadUi('ui_files/ability-jobType_scaling_screen.ui', self)
 
-        self.nextButton.clicked.connect(self.nextScreen)
+        self.nextButton.clicked.connect(self.checkInput)
+
+    def checkInput(self):
+        try:
+            float(self.abilityEntry.text())
+            float(self.abilityIntermediate.text())
+            float(self.abilityHigh.text())
+            float(self.abilityExpert.text())
+
+            float(self.jobSimple.text())
+            float(self.jobMedium.text())
+            float(self.jobHigh.text())
+            float(self.jobComplex.text())
+
+            self.nextScreen()
+        except:
+            msg = QMessageBox()
+            msg.setWindowTitle('ERROR')
+            msg.setIcon(QMessageBox.Critical)
+            error_text = 'Error detected in user input. '\
+                'Ensure that the input is decimal or integer '\
+                'value and there are no blank spaces '\
+                'or other characters/symbols used.'
+            msg.setText(error_text)
+            msg.exec_()
 
     def nextScreen(self):
         global abilityEntry, abilityIntermediate, abilityHigh, abilityExpert
@@ -77,8 +101,42 @@ class ability_jobType_window(QMainWindow):
         uic.loadUi('ui_files/ability_jobType_screen.ui', self)
         self.show()
 
-        self.nextButton.clicked.connect(self.nextScreen)
+        self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
+
+    def checkInput(self):
+        try:
+            int(self.s1.text())
+            int(self.s2.text())
+            int(self.s3.text())
+            int(self.s4.text())
+
+            int(self.m1.text())
+            int(self.m2.text())
+            int(self.m3.text())
+            int(self.m4.text())
+
+            int(self.h1.text())
+            int(self.h2.text())
+            int(self.h3.text())
+            int(self.h4.text())
+
+            int(self.c1.text())
+            int(self.c2.text())
+            int(self.c3.text())
+            int(self.c4.text())
+
+            self.nextScreen()
+        except:
+            msg = QMessageBox()
+            msg.setWindowTitle('ERROR')
+            msg.setIcon(QMessageBox.Critical)
+            error_text = 'Error detected in user input. '\
+                'Ensure that the input is an integer '\
+                'value and there are no blank spaces '\
+                'or other characters/symbols used.'
+            msg.setText(error_text)
+            msg.exec_()
 
     def nextScreen(self):
         global s1, s2, s3, s4
@@ -164,8 +222,27 @@ class quality_window(QMainWindow):
         super(quality_window, self).__init__()
         uic.loadUi('ui_files/quality_screen.ui', self)
 
-        self.nextButton.clicked.connect(self.nextScreen)
+        self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
+
+    def checkInput(self):
+        try:
+            float(self.paramA.text())
+            float(self.paramB.text())
+            float(self.paramC.text())
+            float(self.paramD.text())
+
+            self.nextScreen()
+        except:
+            msg = QMessageBox()
+            msg.setWindowTitle('ERROR')
+            msg.setIcon(QMessageBox.Critical)
+            error_text = 'Error detected in user input. '\
+                'Ensure that the input is decimal or integer '\
+                'value and there are no blank spaces '\
+                'or other characters/symbols used.'
+            msg.setText(error_text)
+            msg.exec_()
 
     def nextScreen(self):
         A = self.paramA.text()
@@ -197,8 +274,27 @@ class quality_scaling_window(QMainWindow):
         super(quality_scaling_window, self).__init__()
         uic.loadUi('ui_files/quality_scaling_screen.ui', self)
 
-        self.nextButton.clicked.connect(self.nextScreen)
+        self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
+
+    def checkInput(self):
+        try:
+            float(self.qualityBasic.text())
+            float(self.qualityStandard.text())
+            float(self.qualityHigh.text())
+            float(self.qualityPremium.text())
+
+            self.nextScreen()
+        except:
+            msg = QMessageBox()
+            msg.setWindowTitle('ERROR')
+            msg.setIcon(QMessageBox.Critical)
+            error_text = 'Error detected in user input. '\
+                'Ensure that the input is decimal or integer '\
+                'value and there are no blank spaces '\
+                'or other characters/symbols used.'
+            msg.setText(error_text)
+            msg.exec_()
 
     def nextScreen(self):
         qualityBasic = self.qualityBasic.text()
@@ -251,7 +347,7 @@ class quality_scaling_window(QMainWindow):
         # Quality Output Dictionary
         global Quality_Dict
         Quality_Dict = {
-            'Simple': Q_Simple, 
+            'Simple': Q_Simple,
             'Medium': Q_Medium,
             'High': Q_High,
             'Complex': Q_Complex
@@ -275,8 +371,28 @@ class management_window(QMainWindow):
         super(management_window, self).__init__()
         uic.loadUi('ui_files/management_screen.ui', self)
 
-        self.nextButton.clicked.connect(self.nextScreen)
+        self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
+
+    def checkInput(self):
+        try:
+            float(self.paramE.text())
+            float(self.paramF.text())
+            float(self.paramG.text())
+            float(self.paramH.text())
+            float(self.paramI.text())
+
+            self.nextScreen()
+        except:
+            msg = QMessageBox()
+            msg.setWindowTitle('ERROR')
+            msg.setIcon(QMessageBox.Critical)
+            error_text = 'Error detected in user input. '\
+                'Ensure that the input is decimal or integer '\
+                'value and there are no blank spaces '\
+                'or other characters/symbols used.'
+            msg.setText(error_text)
+            msg.exec_()
 
     def nextScreen(self):
         E = self.paramE.text()
@@ -309,8 +425,26 @@ class management_scaling_window(QMainWindow):
         super(management_scaling_window, self).__init__()
         uic.loadUi('ui_files/management_scaling_screen.ui', self)
 
-        self.nextButton.clicked.connect(self.nextScreen)
+        self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
+
+    def checkInput(self):
+        try:
+            float(self.managementLow.text())
+            float(self.managementMedium.text())
+            float(self.managementHigh.text())
+
+            self.nextScreen()
+        except:
+            msg = QMessageBox()
+            msg.setWindowTitle('ERROR')
+            msg.setIcon(QMessageBox.Critical)
+            error_text = 'Error detected in user input. '\
+                'Ensure that the input is decimal or integer '\
+                'value and there are no blank spaces '\
+                'or other characters/symbols used.'
+            msg.setText(error_text)
+            msg.exec_()
 
     def nextScreen(self):
         managementLow = self.managementLow.text()
@@ -330,7 +464,7 @@ class management_scaling_window(QMainWindow):
         print('managementScalingFactorsArray:', managementScalingFactorsArray)
 
         managementFactorsInput(managementScalingFactorsArray)
-        
+
         # Management Factors Mapping
         global M_Simple, M_Medium, M_High, M_Complex
         M_Simple = {
@@ -381,8 +515,25 @@ class risk_window(QMainWindow):
         super(risk_window, self).__init__()
         uic.loadUi('ui_files/new_risk_screen.ui', self)
 
-        self.nextButton.clicked.connect(self.nextScreen)
+        self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
+
+    def checkInput(self):
+        try:
+            float(self.paramJ.text())
+            float(self.paramK.text())
+
+            self.nextScreen()
+        except:
+            msg = QMessageBox()
+            msg.setWindowTitle('ERROR')
+            msg.setIcon(QMessageBox.Critical)
+            error_text = 'Error detected in user input. '\
+                'Ensure that the input is decimal or integer '\
+                'value and there are no blank spaces '\
+                'or other characters/symbols used.'
+            msg.setText(error_text)
+            msg.exec_()
 
     def nextScreen(self):
         J = self.paramJ.text()
@@ -412,8 +563,27 @@ class risk_scaling_window(QMainWindow):
         super(risk_scaling_window, self).__init__()
         uic.loadUi('ui_files/new_risk_scaling_screen.ui', self)
 
-        self.nextButton.clicked.connect(self.nextScreen)
+        self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
+
+    def checkInput(self):
+        try:
+            float(self.riskLow.text())
+            float(self.riskMedium.text())
+            float(self.riskHigh.text())
+            float(self.riskComplex.text())
+
+            self.nextScreen()
+        except:
+            msg = QMessageBox()
+            msg.setWindowTitle('ERROR')
+            msg.setIcon(QMessageBox.Critical)
+            error_text = 'Error detected in user input. '\
+                'Ensure that the input is decimal or integer '\
+                'value and there are no blank spaces '\
+                'or other characters/symbols used.'
+            msg.setText(error_text)
+            msg.exec_()
 
     def nextScreen(self):
         riskLow = self.riskLow.text()
@@ -558,11 +728,13 @@ class output_drop_down_window(QMainWindow):
             'Risk': Risk_Dict,
             'Effort': Effort_Dict
             }
+
         output_text \
             = output_dictionary\
             [self.factors.currentText()]\
             [self.parameters1.currentText()]\
             [self.parameters2.currentText()]
+
         self.outputDataLabel.setText(
             f'{output_text:.2f}' + " " \
                 + str(self.factors.currentText()) + " units"
