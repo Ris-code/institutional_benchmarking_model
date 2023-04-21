@@ -17,19 +17,22 @@ QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 from PyQt5.QtGui import QStandardItemModel, QStandardItem
 
 # counter for keeping in check the back and previous screen windows
-counter = 0
+counter = -1
 
 
 # ABILITY JOB-TYPE SCALING SCREEN
 abilityEntry, abiltyIntermediate, abilityHigh, abilityExpert \
     = map(float, [1, 1, 1, 1])
-jobSimple, jobMedium, jobHigh, jobComplex = map(float, [1, 1, 1, 1])
 
 
-class ability_jobType_scaling_window(QMainWindow):
+class ability_scaling_window(QMainWindow):
     def __init__(self):
-        super(ability_jobType_scaling_window, self).__init__()
-        uic.loadUi('ui_files/ability-jobType_scaling_screen.ui', self)
+        super(ability_scaling_window, self).__init__()
+        uic.loadUi('ui_files/ability_scaling_screen.ui', self)
+
+        # adjusting label size
+        self.heading.adjustSize()
+        self.abilityLabel.adjustSize()
 
         self.nextButton.clicked.connect(self.checkInput)
 
@@ -39,11 +42,6 @@ class ability_jobType_scaling_window(QMainWindow):
             float(self.abilityIntermediate.text())
             float(self.abilityHigh.text())
             float(self.abilityExpert.text())
-
-            float(self.jobSimple.text())
-            float(self.jobMedium.text())
-            float(self.jobHigh.text())
-            float(self.jobComplex.text())
 
             self.nextScreen()
         except:
@@ -71,6 +69,53 @@ class ability_jobType_scaling_window(QMainWindow):
                    abilityHigh,
                    abilityExpert])
 
+        print('Ability scaling:',
+              abilityEntry, abiltyIntermediate, abilityHigh, abilityExpert)
+        
+        global counter
+        if counter == -1:
+            counter += 1
+            next_window = jobType_scaling_window()
+            widget.addWidget(next_window)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
+
+
+# JOB-TYPE SCALING SCREEN
+jobSimple, jobMedium, jobHigh, jobComplex = map(float, [1, 1, 1, 1])
+
+
+class jobType_scaling_window(QMainWindow):
+    def __init__(self):
+        super(jobType_scaling_window, self).__init__()
+        uic.loadUi('ui_files/jobType_scaling_screen.ui', self)
+
+        # adjusting label size
+        self.heading.adjustSize()
+        self.jobLabel.adjustSize()
+
+        self.nextButton.clicked.connect(self.checkInput)
+        self.backButton.clicked.connect(self.backScreen)
+
+    def checkInput(self):
+        try:
+            float(self.jobSimple.text())
+            float(self.jobMedium.text())
+            float(self.jobHigh.text())
+            float(self.jobComplex.text())
+
+            self.nextScreen()
+        except:
+            msg = QMessageBox()
+            msg.setWindowTitle('ERROR')
+            msg.setIcon(QMessageBox.Critical)
+            error_text = 'Error detected in user input. '\
+                'Ensure that the input is decimal or integer '\
+                'value and there are no blank spaces '\
+                'or other characters/symbols used.'
+            msg.setText(error_text)
+            msg.exec_()
+
+    def nextScreen(self):
         global jobSimple, jobMedium, jobHigh, jobComplex
         jobSimple = float(self.jobSimple.text())
         jobMedium = float(self.jobMedium.text())
@@ -81,8 +126,6 @@ class ability_jobType_scaling_window(QMainWindow):
             = map(lambda x: x/jobSimple,
                   [jobSimple, jobMedium, jobHigh, jobComplex])
 
-        print('Ability scaling:',
-              abilityEntry, abiltyIntermediate, abilityHigh, abilityExpert)
         print('JobType scaling:',
               jobSimple, jobMedium, jobHigh, jobComplex)
 
@@ -93,13 +136,27 @@ class ability_jobType_scaling_window(QMainWindow):
             widget.addWidget(next_window)
         widget.setCurrentIndex(widget.currentIndex() + 1)
 
+    def backScreen(self):
+        widget.setCurrentIndex(widget.currentIndex() - 1)
+
 
 # ABILITY JOB TYPE SCREEN
 class ability_jobType_window(QMainWindow):
     def __init__(self):
         super(ability_jobType_window, self).__init__()
         uic.loadUi('ui_files/ability_jobType_screen.ui', self)
-        self.show()
+        
+        # adjusting label size
+        self.heading.adjustSize()
+        self.ability_jobtype.adjustSize()
+        self.abilityEntry.adjustSize()
+        self.abilityIntermediate.adjustSize()
+        self.abilityHigh.adjustSize()
+        self.abilityExpert.adjustSize()
+        self.jobtypeSimple.adjustSize()
+        self.jobtypeMedium.adjustSize()
+        self.jobtypeHigh.adjustSize()
+        self.jobtypeComplex.adjustSize()
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -222,6 +279,15 @@ class quality_window(QMainWindow):
         super(quality_window, self).__init__()
         uic.loadUi('ui_files/quality_screen.ui', self)
 
+        # adjusting label size
+        self.heading.adjustSize()
+        self.subHeading.adjustSize()
+        self.instruction.adjustSize()
+        self.labelA.adjustSize()
+        self.labelB.adjustSize()
+        self.labelC.adjustSize()
+        self.labelD.adjustSize()
+
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
 
@@ -273,6 +339,13 @@ class quality_scaling_window(QMainWindow):
     def __init__(self):
         super(quality_scaling_window, self).__init__()
         uic.loadUi('ui_files/quality_scaling_screen.ui', self)
+
+        # adjusting label size
+        self.heading.adjustSize()
+        self.subHeading.adjustSize()
+        self.labelBasic.adjustSize()
+        self.labelHigh.adjustSize()
+        self.labelPremium.adjustSize()
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -371,6 +444,16 @@ class management_window(QMainWindow):
         super(management_window, self).__init__()
         uic.loadUi('ui_files/management_screen.ui', self)
 
+        # adjusting label size
+        self.heading.adjustSize()
+        self.subHeading.adjustSize()
+        self.instructions.adjustSize()
+        self.labelE.adjustSize()
+        self.labelF.adjustSize()
+        self.labelG.adjustSize()
+        self.labelH.adjustSize()
+        self.labelI.adjustSize()
+
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
 
@@ -424,6 +507,13 @@ class management_scaling_window(QMainWindow):
     def __init__(self):
         super(management_scaling_window, self).__init__()
         uic.loadUi('ui_files/management_scaling_screen.ui', self)
+
+        # adjust label size
+        self.heading.adjustSize()
+        self.subHeading.adjustSize()
+        self.labelLow.adjustSize()
+        self.labelMedium.adjustSize()
+        self.labelHigh.adjustSize()
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -513,7 +603,7 @@ class management_scaling_window(QMainWindow):
 class risk_window(QMainWindow):
     def __init__(self):
         super(risk_window, self).__init__()
-        uic.loadUi('ui_files/new_risk_screen.ui', self)
+        uic.loadUi('ui_files/risk_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -561,10 +651,20 @@ class risk_window(QMainWindow):
 class risk_scaling_window(QMainWindow):
     def __init__(self):
         super(risk_scaling_window, self).__init__()
-        uic.loadUi('ui_files/new_risk_scaling_screen.ui', self)
+        uic.loadUi('ui_files/risk_scaling_screen.ui', self)
+
+        # adjust label size
+        self.heading.adjustSize()
+        self.subHeading.adjustSize()
+        self.labelLow.adjustSize()
+        self.labelMedium.adjustSize()
+        self.labelHigh.adjustSize()
+        self.labelComplex.adjustSize()
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
+
+        self.viewButton.clicked.connect(self.viewLookupTable)
 
     def checkInput(self):
         try:
@@ -637,12 +737,41 @@ class risk_scaling_window(QMainWindow):
         global counter
         if counter == 7:
             counter += 1
+            next_window = lookup_table_window()
+            widget.addWidget(next_window)
+
+        if counter == 8:
+            counter += 1
             next_window = output_drop_down_window()
             widget.addWidget(next_window)
 
-        widget.setCurrentIndex(widget.currentIndex() + 1)
+        widget.setCurrentIndex(widget.currentIndex() + 2)
 
     def backScreen(self):
+        widget.setCurrentIndex(widget.currentIndex() - 1)
+
+    def viewLookupTable(self):
+        global counter
+        if counter == 7:
+            counter += 1
+            next_window = lookup_table_window()
+            widget.addWidget(next_window)
+
+        if counter == 8:
+            counter += 1
+            next_window = output_drop_down_window()
+            widget.addWidget(next_window)
+        widget.setCurrentIndex(widget.currentIndex() + 1)
+
+
+# BUSINESS IMPACT LOOKUP TABLE
+class lookup_table_window(QMainWindow):
+    def __init__(self):
+        super(lookup_table_window, self).__init__()
+        uic.loadUi('ui_files/risk_lookup_table.ui', self)
+        self.returnButton.clicked.connect(self.returnBack)
+
+    def returnBack(self):
         widget.setCurrentIndex(widget.currentIndex() - 1)
 
 
@@ -651,7 +780,6 @@ class output_drop_down_window(QMainWindow):
     def __init__(self):
         super(output_drop_down_window, self).__init__()
         uic.loadUi('ui_files/output_drop_down_screen.ui', self)
-        self.setGeometry(200, 100, 810, 450)
         self.show()
 
         self.model = QStandardItemModel(self)
@@ -741,7 +869,7 @@ class output_drop_down_window(QMainWindow):
             )
 
     def backScreen(self):
-        widget.setCurrentIndex(widget.currentIndex() - 1)
+        widget.setCurrentIndex(widget.currentIndex() - 2)
 
 
 # FACTORS & PARAMETERS DICTIONARY
@@ -776,14 +904,12 @@ dictionary = {
 demoApp = QApplication([])
 
 widget = QtWidgets.QStackedWidget()
-first_window = ability_jobType_scaling_window()
+first_window = ability_scaling_window()
 
 # debugging
 # first_window = name_of_window()
 
 widget.addWidget(first_window)
-# widget.setFixedHeight(700)
-# widget.setFixedWidth(750)
 widget.showMaximized()
 
 demoApp.exec_()
