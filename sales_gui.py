@@ -9,14 +9,11 @@ from PyQt5 import QtWidgets, QtCore
 QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
 QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
-# for dependent comboboxes
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
-
 # counter for keeping in check the back and previous screen windows
-counter = -1
+sales_counter = -1
 
 # parameters dictionary (needed in table)
-param_dict = dict()
+sales_param_dict = dict()
 
 
 # STARTING SCREEN
@@ -28,9 +25,9 @@ class starting_window(QMainWindow):
         self.nextButton.clicked.connect(self.nextScreen)
 
     def nextScreen(self):
-        global counter
-        if counter == -1:
-            counter += 1
+        global sales_counter
+        if sales_counter == -1:
+            sales_counter += 1
             next_window = revenue_growth_screen()
             widget.addWidget(next_window)
         widget.setCurrentIndex(widget.currentIndex() + 1)
@@ -70,19 +67,21 @@ class revenue_growth_screen(QMainWindow):
         RevenueGrowth = revenue_growth(current_year_total_revenue, last_year_total_revenue)
         print(f'Revenue Growth: {RevenueGrowth}')
 
-        param_dict['Revenue Growth'] = RevenueGrowth
+        sales_param_dict['Revenue Growth'] = RevenueGrowth
 
-        global counter
-        if counter == 0:
-            counter += 1
-            next_window = customer_retention_rate_ee_screen()
+        global sales_counter
+        if sales_counter == 0:
+            # sales_counter += 1
+            # next_window = customer_retention_rate_ee_screen()
+            sales_counter += 3
+            next_window = number_of_sales_staff_screen()
             widget.addWidget(next_window)
         widget.setCurrentIndex(widget.currentIndex() + 1)
 
     def backScreen(self):
         widget.setCurrentIndex(widget.currentIndex() - 1)
 
-
+''''
 # CUSTOMER RETENTION RATE (EE)
 class customer_retention_rate_ee_screen(QMainWindow):
     def __init__(self):
@@ -120,11 +119,11 @@ class customer_retention_rate_ee_screen(QMainWindow):
             customer_retention_rate(current_customers, lost_customers, prior_year_customers)
         print(f'Customer Retention Rate (EE): {CustomerRetentionRateEE}')
 
-        param_dict['Customer Retention Rate (EE)'] = CustomerRetentionRateEE
+        sales_param_dict['Customer Retention Rate (EE)'] = CustomerRetentionRateEE
 
-        global counter
-        if counter == 1:
-            counter += 1
+        global sales_counter
+        if sales_counter == 1:
+            sales_counter += 1
             next_window = renewal_rate_en_screen()
             widget.addWidget(next_window)
 
@@ -168,11 +167,11 @@ class renewal_rate_en_screen(QMainWindow):
             renewal_rate_en(renewals_on_time, total_current_customers)
         print(f'Renewal Rate (EN): {RenewalRateEN}')
 
-        param_dict['Renewal Rate (EN)'] = RenewalRateEN
+        sales_param_dict['Renewal Rate (EN)'] = RenewalRateEN
 
-        global counter
-        if counter == 2:
-            counter += 1
+        global sales_counter
+        if sales_counter == 2:
+            sales_counter += 1
             next_window = number_of_sales_staff_screen()
             widget.addWidget(next_window)
 
@@ -180,7 +179,7 @@ class renewal_rate_en_screen(QMainWindow):
 
     def backScreen(self):
         widget.setCurrentIndex(widget.currentIndex() - 1)
-
+'''
 
 # NUMBER OF SALES STAFF
 class number_of_sales_staff_screen(QMainWindow):
@@ -215,13 +214,13 @@ class number_of_sales_staff_screen(QMainWindow):
         num_en = int(self.num_en.text())
         num_nn = int(self.num_nn.text())
 
-        param_dict['Number of sales staff (EE)'] = num_ee
-        param_dict['Number of sales staff (EN)'] = num_en
-        param_dict['Number of sales staff (NN)'] = num_nn
+        sales_param_dict['Number of Sales Staff (EE)'] = num_ee
+        sales_param_dict['Number of Sales Staff (EN)'] = num_en
+        sales_param_dict['Number of Sales Staff (NN)'] = num_nn
 
-        global counter
-        if counter == 3:
-            counter += 1
+        global sales_counter
+        if sales_counter == 3:
+            sales_counter += 1
             next_window = spends_cost_measures_screen()
             widget.addWidget(next_window)
 
@@ -266,19 +265,19 @@ class spends_cost_measures_screen(QMainWindow):
         tech_and_ops_spends = int(self.tech_and_ops_spends.text())
         support_enablement_cost = int(self.support_enablement_cost.text())
 
-        print(f'Total marketing spends: {marketing_spends}')
-        print(f'Total customer success / support spend: {customer_success_support_spend}')
-        print(f'Total tech & ops spend on sales: {tech_and_ops_spends}')
-        print(f'Total support / enablement cost: {support_enablement_cost}')
+        print(f'Total Marketing spends: {marketing_spends}')
+        print(f'Total Customer Success / support spend: {customer_success_support_spend}')
+        print(f'Total Tech & Ops Spend on Sales: {tech_and_ops_spends}')
+        print(f'Total Support / Enablement Cost: {support_enablement_cost}')
 
-        param_dict['Total marketing spends'] = marketing_spends
-        param_dict['Total customer sucess / support spend'] = customer_success_support_spend
-        param_dict['Total tech & ops spend on sales'] = tech_and_ops_spends
-        param_dict['Total support / enablement cost'] = support_enablement_cost
+        sales_param_dict['Total Marketing Spends'] = marketing_spends
+        sales_param_dict['Total Customer Sucess / Support Spend'] = customer_success_support_spend
+        sales_param_dict['Total Tech & Ops Spend on Sales'] = tech_and_ops_spends
+        sales_param_dict['Total Support / Enablement Cost'] = support_enablement_cost
 
-        global counter
-        if counter == 4:
-            counter += 1
+        global sales_counter
+        if sales_counter == 4:
+            sales_counter += 1
             next_window = sales_staff_cost_screen()
             widget.addWidget(next_window)
 
@@ -321,13 +320,13 @@ class sales_staff_cost_screen(QMainWindow):
 
         AverageCostToSalesStaff = avg_cost_of_sales_staff(total_sga_cost, total_staff_fte)
 
-        print(f'Average cost to Sales Staff: {AverageCostToSalesStaff}')
+        print(f'Average Cost to Sales Staff: {AverageCostToSalesStaff}')
 
-        param_dict['Average cost to Sales Staff'] = AverageCostToSalesStaff
+        sales_param_dict['Average Cost to Sales Staff'] = AverageCostToSalesStaff
 
-        global counter
-        if counter == 5:
-            counter += 1
+        global sales_counter
+        if sales_counter == 5:
+            sales_counter += 1
             next_window = anticipated_ltv_screen()
             widget.addWidget(next_window)
 
@@ -374,13 +373,13 @@ class anticipated_ltv_screen(QMainWindow):
         print(f'Anticipated Life Time Value (EN): {ltv_en}')
         print(f'Anticipated Life Time Value (NN): {ltv_nn}')
 
-        param_dict['Anticipated Life Time Value (EE)'] = ltv_ee
-        param_dict['Anticipated Life Time Value (EN)'] = ltv_en
-        param_dict['Anticipated Life Time Value (NN)'] = ltv_nn
+        sales_param_dict['Anticipated Life Time Value (EE)'] = ltv_ee
+        sales_param_dict['Anticipated Life Time Value (EN)'] = ltv_en
+        sales_param_dict['Anticipated Life Time Value (NN)'] = ltv_nn
 
-        global counter
-        if counter == 6:
-            counter += 1
+        global sales_counter
+        if sales_counter == 6:
+            sales_counter += 1
             next_window = renewal_rate_screen()
             widget.addWidget(next_window)
 
@@ -425,11 +424,11 @@ class renewal_rate_screen(QMainWindow):
 
         print(f'Renewal Rate: {RenewalRate}')
 
-        param_dict['Renewal Rate'] = RenewalRate
+        sales_param_dict['Renewal Rate'] = RenewalRate
 
-        global counter
-        if counter == 7:
-            counter += 1
+        global sales_counter
+        if sales_counter == 7:
+            sales_counter += 1
             next_window = retention_rate_screen()
             widget.addWidget(next_window)
 
@@ -474,11 +473,11 @@ class retention_rate_screen(QMainWindow):
 
         print(f'Retention Rate: {RetentionRate}')
 
-        param_dict['Retention Rate'] = RetentionRate
+        sales_param_dict['Retention Rate'] = RetentionRate
 
-        global counter
-        if counter == 8:
-            counter += 1
+        global sales_counter
+        if sales_counter == 8:
+            sales_counter += 1
             next_window = churn_rate_screen()
             widget.addWidget(next_window)
 
@@ -521,11 +520,11 @@ class churn_rate_screen(QMainWindow):
 
         print(f'Churn Rate: {ChurnRate}')
 
-        param_dict['Churn Rate'] = ChurnRate
+        sales_param_dict['Churn Rate'] = ChurnRate
 
-        global counter
-        if counter == 9:
-            counter += 1
+        global sales_counter
+        if sales_counter == 9:
+            sales_counter += 1
             next_window = win_rate_screen()
             widget.addWidget(next_window)
 
@@ -570,11 +569,11 @@ class win_rate_screen(QMainWindow):
 
         print(f'Win Rate: {WinRate}')
 
-        param_dict['Win Rate'] = WinRate
+        sales_param_dict['Win Rate'] = WinRate
 
-        global counter
-        if counter == 10:
-            counter += 1
+        global sales_counter
+        if sales_counter == 10:
+            sales_counter += 1
             next_window = revenue_conversion_rate_screen()
             widget.addWidget(next_window)
 
@@ -619,11 +618,11 @@ class revenue_conversion_rate_screen(QMainWindow):
 
         print(f'Revenue Conversion Rate: {RevenueConversionRate}')
 
-        param_dict['Revenye Conversion Rate'] = RevenueConversionRate
+        sales_param_dict['Revenue Conversion Rate'] = RevenueConversionRate
 
-        global counter
-        if counter == 11:
-            counter += 1
+        global sales_counter
+        if sales_counter == 11:
+            sales_counter += 1
             next_window = pipeline_quality_screen()
             widget.addWidget(next_window)
 
@@ -668,11 +667,11 @@ class pipeline_quality_screen(QMainWindow):
 
         print(f'Pipeline Quality: {PipelineQuality}')
 
-        param_dict['Pipeline Quality'] = PipelineQuality
+        sales_param_dict['Pipeline Quality'] = PipelineQuality
 
-        global counter
-        if counter == 12:
-            counter += 1
+        global sales_counter
+        if sales_counter == 12:
+            sales_counter += 1
             next_window = bill_to_book_ratio_screen()
             widget.addWidget(next_window)
 
@@ -717,11 +716,11 @@ class bill_to_book_ratio_screen(QMainWindow):
 
         print(f'Bill to Book Ratio: {BillToBookRatio}')
 
-        param_dict['Bill to Book Ratio'] = BillToBookRatio
+        sales_param_dict['Bill to Book Ratio'] = BillToBookRatio
 
-        global counter
-        if counter == 13:
-            counter += 1
+        global sales_counter
+        if sales_counter == 13:
+            sales_counter += 1
             next_window = display_table_screen()
             widget.addWidget(next_window)
 
@@ -745,24 +744,26 @@ class display_table_screen(QMainWindow):
 
     def load_data(self):
         idx = 0
-        self.tableWidget.setRowCount(len(param_dict))
-        for param in param_dict.keys():
+        self.tableWidget.setRowCount(len(sales_param_dict))
+        for param in sales_param_dict.keys():
             self.tableWidget.setItem(idx, 0, QtWidgets.QTableWidgetItem(param))
-            self.tableWidget.setItem(idx, 1, QtWidgets.QTableWidgetItem(str(param_dict[param])))
+            self.tableWidget.setItem(idx, 1, QtWidgets.QTableWidgetItem(str(sales_param_dict[param])))
             idx += 1
 
     def backScreen(self):
         widget.setCurrentIndex(widget.currentIndex() - 1)
 
-demoApp = QApplication([])
 
-widget = QtWidgets.QStackedWidget()
-first_window = starting_window()
+if __name__ == '__main__':
+    demoApp = QApplication([])
 
-# debugging
-# first_window = screen()
+    widget = QtWidgets.QStackedWidget()
+    first_window = starting_window()
 
-widget.addWidget(first_window)
-widget.showMaximized()
+    # debugging
+    # first_window = name_of_window()
 
-demoApp.exec_()
+    widget.addWidget(first_window)
+    widget.showMaximized()
+
+    demoApp.exec_()

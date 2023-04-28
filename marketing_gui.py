@@ -1,8 +1,7 @@
 # MODULE STUFF
-from marketting import *
+from marketingModule import *
 
 # UI STUFF
-import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 from PyQt5 import QtWidgets, QtCore
@@ -10,11 +9,11 @@ from PyQt5 import QtWidgets, QtCore
 QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
 QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
-# for dependent comboboxes
-from PyQt5.QtGui import QStandardItemModel, QStandardItem
+# counter for keeping in check the back and previous screen windows
+marketing_counter = 0
 
-counter=0
-param_dict=dict()
+# parameters dictionary (needed in table)
+marketing_param_dict = dict()
 
 class web_traffic(QMainWindow):
     def __init__(self):
@@ -53,9 +52,9 @@ class web_traffic(QMainWindow):
 
         print('Website Traffic and Search measure:',
               Website_Traffic, Organic_Search, Direct_Traffic, Referral_Traffic)
-        global counter
-        if counter == 0:
-            counter += 1
+        global marketing_counter
+        if marketing_counter == 0:
+            marketing_counter += 1
             next_window = new_vs_return_visitors()
             widget.addWidget(next_window)
         widget.setCurrentIndex(widget.currentIndex() + 1)
@@ -64,11 +63,11 @@ class web_traffic(QMainWindow):
 
         total_traffic, organic_search_percentage, direct_traffic_percentage, referral_traffic_percentage, social_media_traffic_percentage=web_traffic_search(Organic_Search, Direct_Traffic, Referral_Traffic, Social_Media_Traffic)
         
-        param_dict['Total Traffic']=total_traffic
-        param_dict['Organic Search Percentage']=organic_search_percentage
-        param_dict['Direct Traffic Percentage']=direct_traffic_percentage
-        param_dict['Referral Traffic Percentage']=referral_traffic_percentage
-        param_dict['Social Media Traffic Percentage']=social_media_traffic_percentage
+        marketing_param_dict['Total Traffic']=total_traffic
+        marketing_param_dict['Organic Search Percentage']=organic_search_percentage
+        marketing_param_dict['Direct Traffic Percentage']=direct_traffic_percentage
+        marketing_param_dict['Referral Traffic Percentage']=referral_traffic_percentage
+        marketing_param_dict['Social Media Traffic Percentage']=social_media_traffic_percentage
 
 class new_vs_return_visitors(QMainWindow):
     def __init__(self):
@@ -106,9 +105,9 @@ class new_vs_return_visitors(QMainWindow):
         
         print('New Vs Return Visitors:',
               New_Visitors, Returning_Visitors, Total_Sessions,  Average_Session_Duration)
-        global counter
-        if counter == 1:
-            counter += 1
+        global marketing_counter
+        if marketing_counter == 1:
+            marketing_counter += 1
             next_window = exit_and_bounce_rate()
             widget.addWidget(next_window)
         widget.setCurrentIndex(widget.currentIndex() + 1)
@@ -116,9 +115,9 @@ class new_vs_return_visitors(QMainWindow):
         global sessions_per_visitor, new_visitors_percentage, returning_visitors_percentage
         sessions_per_visitor, new_visitors_percentage, returning_visitors_percentage=new_vs_return_visitor(New_Visitors, Returning_Visitors, Total_Sessions, Average_Session_Duration)
 
-        param_dict['Sessions Per Visitor']=sessions_per_visitor
-        param_dict['New Visitors Percentage']=new_visitors_percentage
-        param_dict['Returning Visitors Percentage']=returning_visitors_percentage
+        marketing_param_dict['Sessions Per Visitor']=sessions_per_visitor
+        marketing_param_dict['New Visitors Percentage']=new_visitors_percentage
+        marketing_param_dict['Returning Visitors Percentage']=returning_visitors_percentage
 
     def backScreen(self):
         widget.setCurrentIndex(widget.currentIndex() - 1)
@@ -158,9 +157,9 @@ class exit_and_bounce_rate(QMainWindow):
         
         print('Exit and Bounce Rate:',
               Page_Views,Exit_Rate, Bounce_Rate)
-        global counter
-        if counter == 2:
-            counter += 1
+        global marketing_counter
+        if marketing_counter == 2:
+            marketing_counter += 1
             next_window = conversion_cost_per_click()
             widget.addWidget(next_window)
         widget.setCurrentIndex(widget.currentIndex() + 1)
@@ -168,8 +167,8 @@ class exit_and_bounce_rate(QMainWindow):
         global total_exits, total_bounces
         total_exits, total_bounces=exit_and_total_bounces(Page_Views, Exit_Rate, Bounce_Rate)
 
-        param_dict['Total Exits']=total_exits
-        param_dict['Total Bounces']=total_bounces
+        marketing_param_dict['Total Exits']=total_exits
+        marketing_param_dict['Total Bounces']=total_bounces
     
     def backScreen(self):
         widget.setCurrentIndex(widget.currentIndex() - 1)
@@ -206,9 +205,9 @@ class conversion_cost_per_click(QMainWindow):
         
         print('Conversion and cost per click:',
               Conversions, Cost_per_click)
-        global counter
-        if counter == 3:
-            counter += 1
+        global marketing_counter
+        if marketing_counter == 3:
+            marketing_counter += 1
             next_window = email_opens_clicks_sents()
             widget.addWidget(next_window)
         widget.setCurrentIndex(widget.currentIndex() + 1)
@@ -216,9 +215,9 @@ class conversion_cost_per_click(QMainWindow):
         global conversion_rate, cost_per_conversion, cost_per_acquisition        
         conversion_rate, cost_per_conversion, cost_per_acquisition=conversion_rate(Conversions, Cost_per_click, total_traffic)        
         
-        param_dict['Conversion Rate']=conversion_rate    
-        param_dict['Cost Per Conversion']=cost_per_conversion
-        param_dict['Cost Per Acquisition']=cost_per_acquisition
+        marketing_param_dict['Conversion Rate']=conversion_rate    
+        marketing_param_dict['Cost Per Conversion']=cost_per_conversion
+        marketing_param_dict['Cost Per Acquisition']=cost_per_acquisition
 
     def backScreen(self):
         widget.setCurrentIndex(widget.currentIndex() - 1)
@@ -257,9 +256,9 @@ class email_opens_clicks_sents(QMainWindow):
                 
         print('Exit and Bounce Rate:',
                Email_Open, Email_Clicks, Email_Sent)
-        global counter
-        if counter == 4:
-            counter += 1
+        global marketing_counter
+        if marketing_counter == 4:
+            marketing_counter += 1
             next_window = impression_social_engagements()
             widget.addWidget(next_window)
         widget.setCurrentIndex(widget.currentIndex() + 1)
@@ -267,8 +266,8 @@ class email_opens_clicks_sents(QMainWindow):
         global email_open_rate, email_click_through_rate
         email_open_rate, email_click_through_rate=email_open_rate(Email_Open, Email_Clicks, Email_Sent)
 
-        param_dict['Email Open Rate']=email_open_rate
-        param_dict['Email Click Through Rate']=email_click_through_rate
+        marketing_param_dict['Email Open Rate']=email_open_rate
+        marketing_param_dict['Email Click Through Rate']=email_click_through_rate
     
     def backScreen(self):
         widget.setCurrentIndex(widget.currentIndex() - 1)
@@ -305,9 +304,9 @@ class impression_social_engagements(QMainWindow):
         
         print('Conversion and cost per click:',
               Impression, Social_Engagement)
-        global counter
-        if counter == 5:
-            counter += 1
+        global marketing_counter
+        if marketing_counter == 5:
+            marketing_counter += 1
             next_window = display_table_screen()
             widget.addWidget(next_window)
         widget.setCurrentIndex(widget.currentIndex() + 1)
@@ -315,7 +314,7 @@ class impression_social_engagements(QMainWindow):
         global engagement_rate
         engagement_rate=engagement_rate(Impression, Social_Engagement)
 
-        param_dict['Engagement Rate']=engagement_rate
+        marketing_param_dict['Engagement Rate']=engagement_rate
     
     def backScreen(self):
         widget.setCurrentIndex(widget.currentIndex() - 1)
@@ -335,27 +334,27 @@ class display_table_screen(QMainWindow):
 
     def load_data(self):
         idx = 0
-        self.tableWidget.setRowCount(len(param_dict))
-        for param in param_dict.keys():
+        self.tableWidget.setRowCount(len(marketing_param_dict))
+        for param in marketing_param_dict.keys():
             self.tableWidget.setItem(idx, 0, QtWidgets.QTableWidgetItem(param))
-            self.tableWidget.setItem(idx, 1, QtWidgets.QTableWidgetItem(str(param_dict[param])))
+            self.tableWidget.setItem(idx, 1, QtWidgets.QTableWidgetItem(str(marketing_param_dict[param])))
             idx += 1
 
     def backScreen(self):
         widget.setCurrentIndex(widget.currentIndex() - 1)
 
+if __name__ == '__main__':
+    demoApp = QApplication([])
 
-demoApp = QApplication([])
+    widget = QtWidgets.QStackedWidget()
+    first_window = web_traffic()
 
-widget = QtWidgets.QStackedWidget()
-first_window = web_traffic()
+    # debugging
+    # first_window = name_of_window()
 
-# debugging
-# first_window = name_of_window()
+    widget.addWidget(first_window)
+    # widget.setFixedHeight(700)
+    # widget.setFixedWidth(750)
+    widget.showMaximized()
 
-widget.addWidget(first_window)
-# widget.setFixedHeight(700)
-# widget.setFixedWidth(750)
-widget.showMaximized()
-
-demoApp.exec_()
+    demoApp.exec_()

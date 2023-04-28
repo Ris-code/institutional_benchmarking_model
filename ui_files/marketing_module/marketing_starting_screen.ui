@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1014</width>
-    <height>1180</height>
+    <width>914</width>
+    <height>460</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -32,13 +32,13 @@
       <property name="minimumSize">
        <size>
         <width>900</width>
-        <height>60</height>
+        <height>225</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
         <width>900</width>
-        <height>60</height>
+        <height>225</height>
        </size>
       </property>
       <property name="frameShape">
@@ -50,10 +50,10 @@
       <widget class="QLabel" name="heading">
        <property name="geometry">
         <rect>
-         <x>0</x>
-         <y>10</y>
+         <x>-10</x>
+         <y>90</y>
          <width>900</width>
-         <height>40</height>
+         <height>50</height>
         </rect>
        </property>
        <property name="sizePolicy">
@@ -65,13 +65,13 @@
        <property name="minimumSize">
         <size>
          <width>900</width>
-         <height>40</height>
+         <height>50</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>16777215</width>
-         <height>16777215</height>
+         <width>900</width>
+         <height>50</height>
         </size>
        </property>
        <property name="font">
@@ -87,7 +87,7 @@
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>Sales Module Output Table</string>
+        <string>MARKETING MODULE</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -99,74 +99,17 @@
      </widget>
     </item>
     <item alignment="Qt::AlignHCenter">
-     <widget class="QFrame" name="frame_5">
-      <property name="minimumSize">
-       <size>
-        <width>900</width>
-        <height>450</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>900</width>
-        <height>450</height>
-       </size>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <widget class="QTableWidget" name="tableWidget">
-       <property name="enabled">
-        <bool>true</bool>
-       </property>
-       <property name="geometry">
-        <rect>
-         <x>250</x>
-         <y>20</y>
-         <width>400</width>
-         <height>375</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>400</width>
-         <height>375</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>400</width>
-         <height>375</height>
-        </size>
-       </property>
-       <column>
-        <property name="text">
-         <string>Parameter</string>
-        </property>
-       </column>
-       <column>
-        <property name="text">
-         <string>Calculated Value</string>
-        </property>
-       </column>
-      </widget>
-     </widget>
-    </item>
-    <item alignment="Qt::AlignHCenter">
      <widget class="QFrame" name="frame_9">
       <property name="minimumSize">
        <size>
-        <width>550</width>
-        <height>60</height>
+        <width>600</width>
+        <height>100</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>550</width>
-        <height>60</height>
+        <width>600</width>
+        <height>100</height>
        </size>
       </property>
       <property name="frameShape">
@@ -175,13 +118,13 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPushButton" name="backButton">
+      <widget class="QPushButton" name="nextButton">
        <property name="geometry">
         <rect>
-         <x>200</x>
-         <y>10</y>
-         <width>150</width>
-         <height>45</height>
+         <x>370</x>
+         <y>20</y>
+         <width>175</width>
+         <height>60</height>
         </rect>
        </property>
        <property name="sizePolicy">
@@ -192,24 +135,70 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>150</width>
-         <height>45</height>
+         <width>175</width>
+         <height>60</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>150</width>
-         <height>45</height>
+         <width>175</width>
+         <height>60</height>
         </size>
        </property>
        <property name="font">
         <font>
          <family>Arial</family>
          <pointsize>14</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
         </font>
        </property>
        <property name="styleSheet">
-        <string notr="true">background-color:rgb(255, 255, 255)</string>
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>START</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="backButton">
+       <property name="geometry">
+        <rect>
+         <x>50</x>
+         <y>20</y>
+         <width>175</width>
+         <height>60</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>175</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>175</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>14</pointsize>
+         <weight>50</weight>
+         <italic>false</italic>
+         <bold>false</bold>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);</string>
        </property>
        <property name="text">
         <string>BACK</string>
@@ -224,7 +213,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1014</width>
+     <width>914</width>
      <height>21</height>
     </rect>
    </property>

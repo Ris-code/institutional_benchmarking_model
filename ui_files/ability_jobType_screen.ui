@@ -75,7 +75,7 @@
         <string>  Enter the number of persons based on the ability and job type distribution.</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        <set>Qt::AlignCenter</set>
        </property>
        <property name="wordWrap">
         <bool>false</bool>
