@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1014</width>
-    <height>599</height>
+    <height>587</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -51,7 +51,7 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>20</y>
+         <y>10</y>
          <width>900</width>
          <height>40</height>
         </rect>
@@ -87,7 +87,7 @@
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>Revenue Conversion Rate</string>
+        <string>Retention Rate</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -96,11 +96,11 @@
         <bool>false</bool>
        </property>
       </widget>
-      <widget class="QLabel" name="abilityLabel">
+      <widget class="QLabel" name="label0">
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>60</y>
+         <y>50</y>
          <width>900</width>
          <height>40</height>
         </rect>
@@ -170,15 +170,15 @@
       <widget class="QWidget" name="layoutWidget_2">
        <property name="geometry">
         <rect>
-         <x>120</x>
+         <x>110</x>
          <y>0</y>
-         <width>457</width>
+         <width>507</width>
          <height>42</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_5">
         <item row="0" column="0">
-         <widget class="QLabel" name="label_bookings">
+         <widget class="QLabel" name="label_current_customers">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -187,13 +187,13 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>350</width>
+            <width>400</width>
             <height>40</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>350</width>
+            <width>400</width>
             <height>40</height>
            </size>
           </property>
@@ -210,7 +210,7 @@
            <string notr="true"/>
           </property>
           <property name="text">
-           <string>Total revenue booked:</string>
+           <string>No. of customers at the end of the year:</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -221,7 +221,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="bookings">
+         <widget class="QLineEdit" name="current_customers">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -287,15 +287,15 @@
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>120</x>
+         <x>110</x>
          <y>0</y>
-         <width>457</width>
+         <width>507</width>
          <height>42</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
-         <widget class="QLabel" name="label_qualified_pipeline">
+         <widget class="QLabel" name="label_prior_year_customers">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -304,13 +304,13 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>350</width>
+            <width>400</width>
             <height>40</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>350</width>
+            <width>400</width>
             <height>40</height>
            </size>
           </property>
@@ -327,7 +327,7 @@
            <string notr="true"/>
           </property>
           <property name="text">
-           <string>Total qualified pipeline:</string>
+           <string>Total no. of customer during the year:</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -338,7 +338,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="qualified_pipeline">
+         <widget class="QLineEdit" name="prior_year_customers">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -401,46 +401,6 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QPushButton" name="backButton">
-       <property name="geometry">
-        <rect>
-         <x>20</x>
-         <y>10</y>
-         <width>150</width>
-         <height>45</height>
-        </rect>
-       </property>
-       <property name="sizePolicy">
-        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-         <horstretch>0</horstretch>
-         <verstretch>0</verstretch>
-        </sizepolicy>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>150</width>
-         <height>45</height>
-        </size>
-       </property>
-       <property name="maximumSize">
-        <size>
-         <width>150</width>
-         <height>45</height>
-        </size>
-       </property>
-       <property name="font">
-        <font>
-         <family>Arial</family>
-         <pointsize>14</pointsize>
-        </font>
-       </property>
-       <property name="styleSheet">
-        <string notr="true">background-color:rgb(255, 255, 255)</string>
-       </property>
-       <property name="text">
-        <string>BACK</string>
-       </property>
-      </widget>
       <widget class="QPushButton" name="nextButton">
        <property name="enabled">
         <bool>true</bool>
@@ -624,6 +584,46 @@
        </property>
        <property name="flat">
         <bool>false</bool>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="backButton">
+       <property name="geometry">
+        <rect>
+         <x>20</x>
+         <y>10</y>
+         <width>150</width>
+         <height>45</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>150</width>
+         <height>45</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>150</width>
+         <height>45</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:rgb(255, 255, 255)</string>
+       </property>
+       <property name="text">
+        <string>BACK</string>
        </property>
       </widget>
      </widget>

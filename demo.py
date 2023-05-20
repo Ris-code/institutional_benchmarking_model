@@ -5,7 +5,6 @@ from riskModule import *
 from effortModule import *
 
 # UI STUFF
-import sys
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 from PyQt5 import QtWidgets, QtCore
@@ -29,10 +28,6 @@ class ability_scaling_window(QMainWindow):
     def __init__(self):
         super(ability_scaling_window, self).__init__()
         uic.loadUi('ui_files/ability_scaling_screen.ui', self)
-
-        # adjusting label size
-        self.heading.adjustSize()
-        self.abilityLabel.adjustSize()
 
         self.nextButton.clicked.connect(self.checkInput)
 
@@ -145,18 +140,6 @@ class ability_jobType_window(QMainWindow):
     def __init__(self):
         super(ability_jobType_window, self).__init__()
         uic.loadUi('ui_files/ability_jobType_screen.ui', self)
-        
-        # adjusting label size
-        self.heading.adjustSize()
-        self.ability_jobtype.adjustSize()
-        self.abilityEntry.adjustSize()
-        self.abilityIntermediate.adjustSize()
-        self.abilityHigh.adjustSize()
-        self.abilityExpert.adjustSize()
-        self.jobtypeSimple.adjustSize()
-        self.jobtypeMedium.adjustSize()
-        self.jobtypeHigh.adjustSize()
-        self.jobtypeComplex.adjustSize()
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -279,15 +262,6 @@ class quality_window(QMainWindow):
         super(quality_window, self).__init__()
         uic.loadUi('ui_files/quality_screen.ui', self)
 
-        # adjusting label size
-        self.heading.adjustSize()
-        self.subHeading.adjustSize()
-        self.instruction.adjustSize()
-        self.labelA.adjustSize()
-        self.labelB.adjustSize()
-        self.labelC.adjustSize()
-        self.labelD.adjustSize()
-
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
 
@@ -339,13 +313,6 @@ class quality_scaling_window(QMainWindow):
     def __init__(self):
         super(quality_scaling_window, self).__init__()
         uic.loadUi('ui_files/quality_scaling_screen.ui', self)
-
-        # adjusting label size
-        self.heading.adjustSize()
-        self.subHeading.adjustSize()
-        self.labelBasic.adjustSize()
-        self.labelHigh.adjustSize()
-        self.labelPremium.adjustSize()
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -444,16 +411,6 @@ class management_window(QMainWindow):
         super(management_window, self).__init__()
         uic.loadUi('ui_files/management_screen.ui', self)
 
-        # adjusting label size
-        self.heading.adjustSize()
-        self.subHeading.adjustSize()
-        self.instructions.adjustSize()
-        self.labelE.adjustSize()
-        self.labelF.adjustSize()
-        self.labelG.adjustSize()
-        self.labelH.adjustSize()
-        self.labelI.adjustSize()
-
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
 
@@ -507,13 +464,6 @@ class management_scaling_window(QMainWindow):
     def __init__(self):
         super(management_scaling_window, self).__init__()
         uic.loadUi('ui_files/management_scaling_screen.ui', self)
-
-        # adjust label size
-        self.heading.adjustSize()
-        self.subHeading.adjustSize()
-        self.labelLow.adjustSize()
-        self.labelMedium.adjustSize()
-        self.labelHigh.adjustSize()
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -652,14 +602,6 @@ class risk_scaling_window(QMainWindow):
     def __init__(self):
         super(risk_scaling_window, self).__init__()
         uic.loadUi('ui_files/risk_scaling_screen.ui', self)
-
-        # adjust label size
-        self.heading.adjustSize()
-        self.subHeading.adjustSize()
-        self.labelLow.adjustSize()
-        self.labelMedium.adjustSize()
-        self.labelHigh.adjustSize()
-        self.labelComplex.adjustSize()
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -901,15 +843,16 @@ dictionary = {
 }
 
 
-demoApp = QApplication([])
+if __name__ == '__main__':
+    demoApp = QApplication([])
 
 widget = QtWidgets.QStackedWidget()
-# first_window = ability_scaling_window()
+first_window = ability_scaling_window()
 
-# debugging
-# first_window = name_of_window()
+    # debugging
+    # first_window = name_of_window()
 
-# widget.addWidget(first_window)
+widget.addWidget(first_window)
 widget.showMaximized()
 
-# demoApp.exec_()
+demoApp.exec_()

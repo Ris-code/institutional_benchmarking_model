@@ -2,42 +2,39 @@
 <ui version="4.0">
  <class>MainWindow</class>
  <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1014</width>
-    <height>599</height>
+    <width>914</width>
+    <height>560</height>
    </rect>
   </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
   <property name="mouseTracking">
-   <bool>false</bool>
+   <bool>true</bool>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: rgb(250, 255, 224);</string>
+   <string notr="true">background-color:rgb(250, 255, 224)</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QVBoxLayout" name="verticalLayout">
     <item alignment="Qt::AlignHCenter">
-     <widget class="QFrame" name="frame_12">
+     <widget class="QFrame" name="frame">
       <property name="minimumSize">
        <size>
-        <width>900</width>
+        <width>750</width>
         <height>100</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>900</width>
+        <width>750</width>
         <height>100</height>
        </size>
       </property>
@@ -51,9 +48,9 @@
        <property name="geometry">
         <rect>
          <x>0</x>
-         <y>20</y>
-         <width>900</width>
-         <height>40</height>
+         <y>0</y>
+         <width>750</width>
+         <height>50</height>
         </rect>
        </property>
        <property name="sizePolicy">
@@ -64,30 +61,24 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>900</width>
-         <height>40</height>
+         <width>750</width>
+         <height>50</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>16777215</width>
-         <height>16777215</height>
+         <width>750</width>
+         <height>50</height>
         </size>
        </property>
        <property name="font">
         <font>
-         <family>Times New Roman</family>
+         <family>Cambria</family>
          <pointsize>20</pointsize>
-         <weight>50</weight>
-         <italic>false</italic>
-         <bold>false</bold>
         </font>
        </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
        <property name="text">
-        <string>Revenue Conversion Rate</string>
+        <string>Renewal Rate (EN)</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -96,12 +87,12 @@
         <bool>false</bool>
        </property>
       </widget>
-      <widget class="QLabel" name="abilityLabel">
+      <widget class="QLabel" name="subHeading">
        <property name="geometry">
         <rect>
-         <x>0</x>
+         <x>150</x>
          <y>60</y>
-         <width>900</width>
+         <width>450</width>
          <height>40</height>
         </rect>
        </property>
@@ -113,30 +104,24 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>900</width>
+         <width>450</width>
          <height>40</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>16777215</width>
-         <height>16777215</height>
+         <width>450</width>
+         <height>40</height>
         </size>
        </property>
        <property name="font">
         <font>
          <family>Arial</family>
          <pointsize>16</pointsize>
-         <weight>50</weight>
-         <italic>false</italic>
-         <bold>false</bold>
         </font>
        </property>
-       <property name="styleSheet">
-        <string notr="true"/>
-       </property>
        <property name="text">
-        <string>Enter the values for the following parameters:-</string>
+        <string>Enter the values for the following parameters.</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -148,16 +133,16 @@
      </widget>
     </item>
     <item alignment="Qt::AlignHCenter">
-     <widget class="QFrame" name="frame_5">
+     <widget class="QFrame" name="frame_3">
       <property name="minimumSize">
        <size>
-        <width>900</width>
+        <width>750</width>
         <height>50</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>900</width>
+        <width>750</width>
         <height>50</height>
        </size>
       </property>
@@ -170,15 +155,15 @@
       <widget class="QWidget" name="layoutWidget_2">
        <property name="geometry">
         <rect>
-         <x>120</x>
+         <x>-50</x>
          <y>0</y>
-         <width>457</width>
-         <height>42</height>
+         <width>661</width>
+         <height>32</height>
         </rect>
        </property>
-       <layout class="QGridLayout" name="gridLayout_5">
+       <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
-         <widget class="QLabel" name="label_bookings">
+         <widget class="QLabel" name="label_renewals_on_time">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -187,14 +172,14 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>350</width>
-            <height>40</height>
+            <width>500</width>
+            <height>30</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>350</width>
-            <height>40</height>
+            <width>500</width>
+            <height>30</height>
            </size>
           </property>
           <property name="font">
@@ -202,15 +187,11 @@
             <family>Arial</family>
             <pointsize>14</pointsize>
             <weight>75</weight>
-            <italic>false</italic>
             <bold>true</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
           <property name="text">
-           <string>Total revenue booked:</string>
+           <string>No. of customers renewed on time:</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -221,7 +202,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="bookings">
+         <widget class="QLineEdit" name="renewals_on_time">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -231,13 +212,13 @@
           <property name="minimumSize">
            <size>
             <width>100</width>
-            <height>40</height>
+            <height>30</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>100</width>
-            <height>40</height>
+            <height>30</height>
            </size>
           </property>
           <property name="font">
@@ -245,18 +226,11 @@
             <family>Arial</family>
             <pointsize>12</pointsize>
             <weight>50</weight>
-            <italic>false</italic>
             <bold>false</bold>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(255, 255, 255);</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           <string notr="true">background-color:rgb(255, 255, 255)</string>
           </property>
          </widget>
         </item>
@@ -265,16 +239,16 @@
      </widget>
     </item>
     <item alignment="Qt::AlignHCenter">
-     <widget class="QFrame" name="frame_6">
+     <widget class="QFrame" name="frame_4">
       <property name="minimumSize">
        <size>
-        <width>900</width>
+        <width>750</width>
         <height>50</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>900</width>
+        <width>750</width>
         <height>50</height>
        </size>
       </property>
@@ -284,18 +258,18 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="layoutWidget_3">
        <property name="geometry">
         <rect>
-         <x>120</x>
+         <x>-40</x>
          <y>0</y>
-         <width>457</width>
-         <height>42</height>
+         <width>661</width>
+         <height>32</height>
         </rect>
        </property>
-       <layout class="QGridLayout" name="gridLayout_2">
+       <layout class="QGridLayout" name="gridLayout_6">
         <item row="0" column="0">
-         <widget class="QLabel" name="label_qualified_pipeline">
+         <widget class="QLabel" name="label_total_current_customers">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -304,14 +278,14 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>350</width>
-            <height>40</height>
+            <width>500</width>
+            <height>30</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>350</width>
-            <height>40</height>
+            <width>500</width>
+            <height>30</height>
            </size>
           </property>
           <property name="font">
@@ -319,15 +293,11 @@
             <family>Arial</family>
             <pointsize>14</pointsize>
             <weight>75</weight>
-            <italic>false</italic>
             <bold>true</bold>
            </font>
           </property>
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
           <property name="text">
-           <string>Total qualified pipeline:</string>
+           <string>Total no. of current revenue customers:</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -338,7 +308,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="qualified_pipeline">
+         <widget class="QLineEdit" name="total_current_customers">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -348,13 +318,13 @@
           <property name="minimumSize">
            <size>
             <width>100</width>
-            <height>40</height>
+            <height>30</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>100</width>
-            <height>40</height>
+            <height>30</height>
            </size>
           </property>
           <property name="font">
@@ -362,18 +332,11 @@
             <family>Arial</family>
             <pointsize>12</pointsize>
             <weight>50</weight>
-            <italic>false</italic>
             <bold>false</bold>
            </font>
           </property>
           <property name="styleSheet">
-           <string notr="true">background-color: rgb(255, 255, 255);</string>
-          </property>
-          <property name="text">
-           <string/>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           <string notr="true">background-color:rgb(255, 255, 255)</string>
           </property>
          </widget>
         </item>
@@ -382,7 +345,7 @@
      </widget>
     </item>
     <item alignment="Qt::AlignHCenter">
-     <widget class="QFrame" name="frame_9">
+     <widget class="QFrame" name="frame_8">
       <property name="minimumSize">
        <size>
         <width>550</width>
@@ -635,7 +598,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1014</width>
+     <width>914</width>
      <height>21</height>
     </rect>
    </property>

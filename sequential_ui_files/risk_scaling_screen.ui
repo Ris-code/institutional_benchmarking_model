@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>914</width>
-    <height>485</height>
+    <height>495</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,13 +23,13 @@
       <property name="minimumSize">
        <size>
         <width>900</width>
-        <height>55</height>
+        <height>75</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
         <width>900</width>
-        <height>55</height>
+        <height>75</height>
        </size>
       </property>
       <property name="frameShape">
@@ -39,6 +39,71 @@
        <enum>QFrame::Raised</enum>
       </property>
       <widget class="QLabel" name="heading">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>10</y>
+         <width>900</width>
+         <height>60</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>900</width>
+         <height>60</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>16777215</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Times New Roman</family>
+         <pointsize>20</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>BUSINESS IMPACT SCALING</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignCenter</set>
+       </property>
+       <property name="wordWrap">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item alignment="Qt::AlignHCenter">
+     <widget class="QFrame" name="frame_2">
+      <property name="minimumSize">
+       <size>
+        <width>900</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>900</width>
+        <height>60</height>
+       </size>
+      </property>
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <property name="frameShadow">
+       <enum>QFrame::Raised</enum>
+      </property>
+      <widget class="QLabel" name="subHeading">
        <property name="geometry">
         <rect>
          <x>0</x>
@@ -55,7 +120,7 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>800</width>
+         <width>900</width>
          <height>50</height>
         </size>
        </property>
@@ -67,12 +132,12 @@
        </property>
        <property name="font">
         <font>
-         <family>Times New Roman</family>
+         <family>Arial</family>
          <pointsize>18</pointsize>
         </font>
        </property>
        <property name="text">
-        <string>QUALITY ASSESSMENT</string>
+        <string>Enter the scaling for the Business Impact.</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -80,114 +145,6 @@
        <property name="wordWrap">
         <bool>false</bool>
        </property>
-      </widget>
-     </widget>
-    </item>
-    <item alignment="Qt::AlignHCenter">
-     <widget class="QFrame" name="frame_2">
-      <property name="minimumSize">
-       <size>
-        <width>900</width>
-        <height>70</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>700</width>
-        <height>70</height>
-       </size>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::StyledPanel</enum>
-      </property>
-      <property name="frameShadow">
-       <enum>QFrame::Raised</enum>
-      </property>
-      <widget class="QWidget" name="layoutWidget">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>902</width>
-         <height>67</height>
-        </rect>
-       </property>
-       <layout class="QGridLayout" name="gridLayout_5">
-        <item row="0" column="0">
-         <widget class="QLabel" name="subHeading">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>900</width>
-            <height>35</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>16</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>Enter the values for the following parameters.</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="wordWrap">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QLabel" name="instruction">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="minimumSize">
-           <size>
-            <width>900</width>
-            <height>25</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>16777215</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="font">
-           <font>
-            <family>Arial</family>
-            <pointsize>12</pointsize>
-           </font>
-          </property>
-          <property name="text">
-           <string>(Enter percentage values in decimal form)</string>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-          <property name="wordWrap">
-           <bool>false</bool>
-          </property>
-         </widget>
-        </item>
-       </layout>
       </widget>
      </widget>
     </item>
@@ -214,15 +171,15 @@
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>0</x>
-         <y>4</y>
-         <width>821</width>
+         <x>290</x>
+         <y>0</y>
+         <width>307</width>
          <height>42</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout">
         <item row="0" column="0">
-         <widget class="QLabel" name="labelA">
+         <widget class="QLabel" name="labelLow">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -231,7 +188,7 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>550</width>
+            <width>150</width>
             <height>40</height>
            </size>
           </property>
@@ -250,10 +207,10 @@
            </font>
           </property>
           <property name="text">
-           <string>  Completeness of function/task delivered against goal</string>
+           <string>Low :</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
           <property name="wordWrap">
            <bool>false</bool>
@@ -261,7 +218,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="paramA">
+         <widget class="QLineEdit" name="riskLow">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -270,13 +227,7 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>100</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>100</width>
+            <width>150</width>
             <height>40</height>
            </size>
           </property>
@@ -320,15 +271,15 @@
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>0</x>
-         <y>4</y>
-         <width>821</width>
+         <x>290</x>
+         <y>0</y>
+         <width>307</width>
          <height>42</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
-         <widget class="QLabel" name="labelB">
+         <widget class="QLabel" name="labelMedium">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -337,7 +288,7 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>550</width>
+            <width>150</width>
             <height>40</height>
            </size>
           </property>
@@ -356,10 +307,10 @@
            </font>
           </property>
           <property name="text">
-           <string>  Reliability level</string>
+           <string>Medium :</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
           <property name="wordWrap">
            <bool>false</bool>
@@ -367,7 +318,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="paramB">
+         <widget class="QLineEdit" name="riskMedium">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -376,13 +327,13 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>100</width>
+            <width>150</width>
             <height>40</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>100</width>
+            <width>150</width>
             <height>40</height>
            </size>
           </property>
@@ -423,18 +374,18 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QWidget" name="layoutWidget">
+      <widget class="QWidget" name="">
        <property name="geometry">
         <rect>
-         <x>0</x>
-         <y>4</y>
-         <width>821</width>
+         <x>290</x>
+         <y>0</y>
+         <width>307</width>
          <height>42</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="0">
-         <widget class="QLabel" name="labelC">
+         <widget class="QLabel" name="labelHigh">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -443,7 +394,7 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>550</width>
+            <width>150</width>
             <height>40</height>
            </size>
           </property>
@@ -462,10 +413,10 @@
            </font>
           </property>
           <property name="text">
-           <string>  TCOQ</string>
+           <string>High :</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
           <property name="wordWrap">
            <bool>false</bool>
@@ -473,7 +424,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="paramC">
+         <widget class="QLineEdit" name="riskHigh">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -482,13 +433,13 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>100</width>
+            <width>150</width>
             <height>40</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>100</width>
+            <width>150</width>
             <height>40</height>
            </size>
           </property>
@@ -532,15 +483,15 @@
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>0</x>
-         <y>4</y>
-         <width>821</width>
+         <x>290</x>
+         <y>0</y>
+         <width>307</width>
          <height>42</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_4">
         <item row="0" column="0">
-         <widget class="QLabel" name="labelD">
+         <widget class="QLabel" name="labelComplex">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -549,7 +500,7 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>550</width>
+            <width>150</width>
             <height>40</height>
            </size>
           </property>
@@ -568,10 +519,10 @@
            </font>
           </property>
           <property name="text">
-           <string>  Level of standardization &amp; reusability</string>
+           <string>Complex :</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
           <property name="wordWrap">
            <bool>false</bool>
@@ -579,7 +530,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="paramD">
+         <widget class="QLineEdit" name="riskComplex">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -588,13 +539,13 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>100</width>
+            <width>150</width>
             <height>40</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
-            <width>100</width>
+            <width>150</width>
             <height>40</height>
            </size>
           </property>
@@ -619,14 +570,14 @@
      <widget class="QFrame" name="frame_7">
       <property name="minimumSize">
        <size>
-        <width>600</width>
-        <height>50</height>
+        <width>900</width>
+        <height>75</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>600</width>
-        <height>50</height>
+        <width>900</width>
+        <height>75</height>
        </size>
       </property>
       <property name="frameShape">
@@ -638,10 +589,10 @@
       <widget class="QPushButton" name="backButton">
        <property name="geometry">
         <rect>
-         <x>10</x>
+         <x>20</x>
          <y>10</y>
-         <width>150</width>
-         <height>40</height>
+         <width>125</width>
+         <height>50</height>
         </rect>
        </property>
        <property name="sizePolicy">
@@ -652,14 +603,14 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>150</width>
-         <height>40</height>
+         <width>125</width>
+         <height>50</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>150</width>
-         <height>40</height>
+         <width>125</width>
+         <height>50</height>
         </size>
        </property>
        <property name="font">
@@ -678,10 +629,10 @@
       <widget class="QPushButton" name="nextButton">
        <property name="geometry">
         <rect>
-         <x>440</x>
+         <x>750</x>
          <y>10</y>
-         <width>150</width>
-         <height>40</height>
+         <width>125</width>
+         <height>50</height>
         </rect>
        </property>
        <property name="sizePolicy">
@@ -692,14 +643,14 @@
        </property>
        <property name="minimumSize">
         <size>
-         <width>150</width>
-         <height>40</height>
+         <width>125</width>
+         <height>50</height>
         </size>
        </property>
        <property name="maximumSize">
         <size>
-         <width>150</width>
-         <height>40</height>
+         <width>125</width>
+         <height>50</height>
         </size>
        </property>
        <property name="font">
@@ -713,6 +664,46 @@
        </property>
        <property name="text">
         <string>NEXT</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="viewButton">
+       <property name="geometry">
+        <rect>
+         <x>320</x>
+         <y>10</y>
+         <width>250</width>
+         <height>50</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>250</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>250</width>
+         <height>50</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>14</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:rgb(255, 255, 255)</string>
+       </property>
+       <property name="text">
+        <string>VIEW LOOKUP TABLE</string>
        </property>
       </widget>
      </widget>

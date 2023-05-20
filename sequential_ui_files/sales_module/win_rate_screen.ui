@@ -87,7 +87,7 @@
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>Revenue Conversion Rate</string>
+        <string>Win Rate</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -170,7 +170,7 @@
       <widget class="QWidget" name="layoutWidget_2">
        <property name="geometry">
         <rect>
-         <x>120</x>
+         <x>180</x>
          <y>0</y>
          <width>457</width>
          <height>42</height>
@@ -178,7 +178,7 @@
        </property>
        <layout class="QGridLayout" name="gridLayout_5">
         <item row="0" column="0">
-         <widget class="QLabel" name="label_bookings">
+         <widget class="QLabel" name="label_bids_won">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -210,7 +210,7 @@
            <string notr="true"/>
           </property>
           <property name="text">
-           <string>Total revenue booked:</string>
+           <string>Total number of bids won:</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -221,7 +221,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="bookings">
+         <widget class="QLineEdit" name="bids_won">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -287,7 +287,7 @@
       <widget class="QWidget" name="layoutWidget">
        <property name="geometry">
         <rect>
-         <x>120</x>
+         <x>180</x>
          <y>0</y>
          <width>457</width>
          <height>42</height>
@@ -295,7 +295,7 @@
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="0" column="0">
-         <widget class="QLabel" name="label_qualified_pipeline">
+         <widget class="QLabel" name="label_bids_submitted">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
@@ -327,7 +327,7 @@
            <string notr="true"/>
           </property>
           <property name="text">
-           <string>Total qualified pipeline:</string>
+           <string>Total number of bids submitted:</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -338,7 +338,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="qualified_pipeline">
+         <widget class="QLineEdit" name="bids_submitted">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
             <horstretch>0</horstretch>
