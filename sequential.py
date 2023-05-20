@@ -28,7 +28,7 @@ marketing_param_dict = dict()
 class main_start_screen(QMainWindow):
     def __init__(self):
         super(main_start_screen, self).__init__()
-        uic.loadUi('ui_files/ultimate_start_screen.ui', self)
+        uic.loadUi('sequential_ui_files/ultimate_start_screen.ui', self)
 
         self.startButton.clicked.connect(self.nextScreen)
 
@@ -48,7 +48,7 @@ abilityEntry, abiltyIntermediate, abilityHigh, abilityExpert \
 class ability_scaling_window(QMainWindow):
     def __init__(self):
         super(ability_scaling_window, self).__init__()
-        uic.loadUi('ui_files/ability_scaling_screen.ui', self)
+        uic.loadUi('sequential_ui_files/ability_scaling_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -106,7 +106,7 @@ jobSimple, jobMedium, jobHigh, jobComplex = map(float, [1, 1, 1, 1])
 class jobType_scaling_window(QMainWindow):
     def __init__(self):
         super(jobType_scaling_window, self).__init__()
-        uic.loadUi('ui_files/jobType_scaling_screen.ui', self)
+        uic.loadUi('sequential_ui_files/jobType_scaling_screen.ui', self)
 
         # adjusting label size
         self.heading.adjustSize()
@@ -163,7 +163,7 @@ class jobType_scaling_window(QMainWindow):
 class ability_jobType_window(QMainWindow):
     def __init__(self):
         super(ability_jobType_window, self).__init__()
-        uic.loadUi('ui_files/ability_jobType_screen.ui', self)
+        uic.loadUi('sequential_ui_files/ability_jobType_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -284,7 +284,7 @@ class ability_jobType_window(QMainWindow):
 class quality_window(QMainWindow):
     def __init__(self):
         super(quality_window, self).__init__()
-        uic.loadUi('ui_files/quality_screen.ui', self)
+        uic.loadUi('sequential_ui_files/quality_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -336,7 +336,7 @@ class quality_window(QMainWindow):
 class quality_scaling_window(QMainWindow):
     def __init__(self):
         super(quality_scaling_window, self).__init__()
-        uic.loadUi('ui_files/quality_scaling_screen.ui', self)
+        uic.loadUi('sequential_ui_files/quality_scaling_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -433,7 +433,7 @@ class quality_scaling_window(QMainWindow):
 class management_window(QMainWindow):
     def __init__(self):
         super(management_window, self).__init__()
-        uic.loadUi('ui_files/management_screen.ui', self)
+        uic.loadUi('sequential_ui_files/management_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -487,7 +487,7 @@ class management_window(QMainWindow):
 class management_scaling_window(QMainWindow):
     def __init__(self):
         super(management_scaling_window, self).__init__()
-        uic.loadUi('ui_files/management_scaling_screen.ui', self)
+        uic.loadUi('sequential_ui_files/management_scaling_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -577,7 +577,7 @@ class management_scaling_window(QMainWindow):
 class risk_window(QMainWindow):
     def __init__(self):
         super(risk_window, self).__init__()
-        uic.loadUi('ui_files/risk_screen.ui', self)
+        uic.loadUi('sequential_ui_files/risk_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -625,7 +625,7 @@ class risk_window(QMainWindow):
 class risk_scaling_window(QMainWindow):
     def __init__(self):
         super(risk_scaling_window, self).__init__()
-        uic.loadUi('ui_files/risk_scaling_screen.ui', self)
+        uic.loadUi('sequential_ui_files/risk_scaling_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -734,7 +734,7 @@ class risk_scaling_window(QMainWindow):
 class lookup_table_window(QMainWindow):
     def __init__(self):
         super(lookup_table_window, self).__init__()
-        uic.loadUi('ui_files/risk_lookup_table.ui', self)
+        uic.loadUi('sequential_ui_files/risk_lookup_table.ui', self)
         self.returnButton.clicked.connect(self.returnBack)
 
     def returnBack(self):
@@ -745,7 +745,7 @@ class lookup_table_window(QMainWindow):
 class output_drop_down_window(QMainWindow):
     def __init__(self):
         super(output_drop_down_window, self).__init__()
-        uic.loadUi('ui_files/output_drop_down_screen.ui', self)
+        uic.loadUi('sequential_ui_files/output_drop_down_screen.ui', self)
         self.show()
 
         self.model = QStandardItemModel(self)
@@ -882,7 +882,7 @@ dictionary = {
 class sales_starting_window(QMainWindow):
     def __init__(self):
         super(sales_starting_window, self).__init__()
-        uic.loadUi('ui_files/sales_module/sales_starting_screen.ui', self)
+        uic.loadUi('sequential_ui_files/sales_module/sales_starting_screen.ui', self)
 
         self.nextButton.clicked.connect(self.nextScreen)
         self.backButton.clicked.connect(self.backScreen)
@@ -903,7 +903,7 @@ class sales_starting_window(QMainWindow):
 class revenue_growth_screen(QMainWindow):
     def __init__(self):
         super(revenue_growth_screen, self).__init__()
-        uic.loadUi('ui_files/sales_module/revenue_growth_screen.ui', self)
+        uic.loadUi('sequential_ui_files/sales_module/revenue_growth_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -950,7 +950,7 @@ class revenue_growth_screen(QMainWindow):
 class number_of_sales_staff_screen(QMainWindow):
     def __init__(self):
         super(number_of_sales_staff_screen, self).__init__()
-        uic.loadUi('ui_files/sales_module/number_of_sales_staff_screen.ui', self)
+        uic.loadUi('sequential_ui_files/sales_module/number_of_sales_staff_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -999,7 +999,7 @@ class number_of_sales_staff_screen(QMainWindow):
 class spends_cost_measures_screen(QMainWindow):
     def __init__(self):
         super(spends_cost_measures_screen, self).__init__()
-        uic.loadUi('ui_files/sales_module/spends_cost_measures_screen.ui', self)
+        uic.loadUi('sequential_ui_files/sales_module/spends_cost_measures_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -1056,7 +1056,7 @@ class spends_cost_measures_screen(QMainWindow):
 class sales_staff_cost_screen(QMainWindow):
     def __init__(self):
         super(sales_staff_cost_screen, self).__init__()
-        uic.loadUi('ui_files/sales_module/sales_staff_cost_screen.ui', self)
+        uic.loadUi('sequential_ui_files/sales_module/sales_staff_cost_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -1105,7 +1105,7 @@ class sales_staff_cost_screen(QMainWindow):
 class anticipated_ltv_screen(QMainWindow):
     def __init__(self):
         super(anticipated_ltv_screen, self).__init__()
-        uic.loadUi('ui_files/sales_module/anticipated_ltv_screen.ui', self)
+        uic.loadUi('sequential_ui_files/sales_module/anticipated_ltv_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -1158,7 +1158,7 @@ class anticipated_ltv_screen(QMainWindow):
 class renewal_rate_screen(QMainWindow):
     def __init__(self):
         super(renewal_rate_screen, self).__init__()
-        uic.loadUi('ui_files/sales_module/renewal_rate_screen.ui', self)
+        uic.loadUi('sequential_ui_files/sales_module/renewal_rate_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -1207,7 +1207,7 @@ class renewal_rate_screen(QMainWindow):
 class retention_rate_screen(QMainWindow):
     def __init__(self):
         super(retention_rate_screen, self).__init__()
-        uic.loadUi('ui_files/sales_module/retention_rate_screen.ui', self)
+        uic.loadUi('sequential_ui_files/sales_module/retention_rate_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -1256,7 +1256,7 @@ class retention_rate_screen(QMainWindow):
 class churn_rate_screen(QMainWindow):
     def __init__(self):
         super(churn_rate_screen, self).__init__()
-        uic.loadUi('ui_files/sales_module/churn_rate_screen.ui', self)
+        uic.loadUi('sequential_ui_files/sales_module/churn_rate_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -1303,7 +1303,7 @@ class churn_rate_screen(QMainWindow):
 class win_rate_screen(QMainWindow):
     def __init__(self):
         super(win_rate_screen, self).__init__()
-        uic.loadUi('ui_files/sales_module/win_rate_screen.ui', self)
+        uic.loadUi('sequential_ui_files/sales_module/win_rate_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -1352,7 +1352,7 @@ class win_rate_screen(QMainWindow):
 class revenue_conversion_rate_screen(QMainWindow):
     def __init__(self):
         super(revenue_conversion_rate_screen, self).__init__()
-        uic.loadUi('ui_files/sales_module/revenue_conversion_rate_screen.ui', self)
+        uic.loadUi('sequential_ui_files/sales_module/revenue_conversion_rate_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -1401,7 +1401,7 @@ class revenue_conversion_rate_screen(QMainWindow):
 class pipeline_quality_screen(QMainWindow):
     def __init__(self):
         super(pipeline_quality_screen, self).__init__()
-        uic.loadUi('ui_files/sales_module/pipeline_quality_screen.ui', self)
+        uic.loadUi('sequential_ui_files/sales_module/pipeline_quality_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -1450,7 +1450,7 @@ class pipeline_quality_screen(QMainWindow):
 class bill_to_book_ratio_screen(QMainWindow):
     def __init__(self):
         super(bill_to_book_ratio_screen, self).__init__()
-        uic.loadUi('ui_files/sales_module/bill_to_book_ratio_screen.ui', self)
+        uic.loadUi('sequential_ui_files/sales_module/bill_to_book_ratio_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -1499,7 +1499,7 @@ class bill_to_book_ratio_screen(QMainWindow):
 class sales_display_table_screen(QMainWindow):
     def __init__(self):
         super(sales_display_table_screen, self).__init__()
-        uic.loadUi('ui_files/sales_module/sales_display_table_screen.ui', self)
+        uic.loadUi('sequential_ui_files/sales_module/sales_display_table_screen.ui', self)
 
         self.tableWidget.setColumnWidth(0, 200)
         self.tableWidget.setColumnWidth(1, 150)
@@ -1532,7 +1532,7 @@ class sales_display_table_screen(QMainWindow):
 class marketing_starting_window(QMainWindow):
     def __init__(self):
         super(marketing_starting_window, self).__init__()
-        uic.loadUi('ui_files/marketing_module/marketing_starting_screen.ui', self)
+        uic.loadUi('sequential_ui_files/marketing_module/marketing_starting_screen.ui', self)
 
         self.nextButton.clicked.connect(self.nextScreen)
         self.backButton.clicked.connect(self.backScreen)
@@ -1552,7 +1552,7 @@ class marketing_starting_window(QMainWindow):
 class web_traffic(QMainWindow):
     def __init__(self):
         super(web_traffic, self).__init__()
-        uic.loadUi('ui_files/marketing_module/marketing_web_traffic.ui', self)
+        uic.loadUi('sequential_ui_files/marketing_module/marketing_web_traffic.ui', self)
 
         self.backButton.clicked.connect(self.backScreen)
         self.nextButton.clicked.connect(self.checkInput)
@@ -1611,7 +1611,7 @@ class web_traffic(QMainWindow):
 class new_vs_return_visitors(QMainWindow):
     def __init__(self):
         super(new_vs_return_visitors, self).__init__()
-        uic.loadUi('ui_files/marketing_module/marketing_new_vs_return_visitors.ui', self)
+        uic.loadUi('sequential_ui_files/marketing_module/marketing_new_vs_return_visitors.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -1665,7 +1665,7 @@ class new_vs_return_visitors(QMainWindow):
 class exit_and_bounce_rate(QMainWindow):
     def __init__(self):
         super(exit_and_bounce_rate, self).__init__()
-        uic.loadUi('ui_files/marketing_module/marketing_exit_and_bounce_rate.ui', self)
+        uic.loadUi('sequential_ui_files/marketing_module/marketing_exit_and_bounce_rate.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -1717,7 +1717,7 @@ class exit_and_bounce_rate(QMainWindow):
 class conversion_cost_per_click(QMainWindow):
     def __init__(self):
         super(conversion_cost_per_click, self).__init__()
-        uic.loadUi('ui_files/marketing_module/marketing_conversion_cost_per_click.ui', self)
+        uic.loadUi('sequential_ui_files/marketing_module/marketing_conversion_cost_per_click.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -1768,7 +1768,7 @@ class conversion_cost_per_click(QMainWindow):
 class email_opens_clicks_sents(QMainWindow):
     def __init__(self):
         super(email_opens_clicks_sents, self).__init__()
-        uic.loadUi('ui_files/marketing_module/marketing_email_opens_clicks_sents.ui', self)
+        uic.loadUi('sequential_ui_files/marketing_module/marketing_email_opens_clicks_sents.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -1820,7 +1820,7 @@ class email_opens_clicks_sents(QMainWindow):
 class impression_social_engagements(QMainWindow):
     def __init__(self):
         super(impression_social_engagements, self).__init__()
-        uic.loadUi('ui_files/marketing_module/marketing_impression_social_engagement.ui', self)
+        uic.loadUi('sequential_ui_files/marketing_module/marketing_impression_social_engagement.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
         self.backButton.clicked.connect(self.backScreen)
@@ -1870,7 +1870,7 @@ class impression_social_engagements(QMainWindow):
 class marketing_display_table_screen(QMainWindow):
     def __init__(self):
         super(marketing_display_table_screen, self).__init__()
-        uic.loadUi('ui_files/marketing_module/marketing_display_table_screen.ui', self)
+        uic.loadUi('sequential_ui_files/marketing_module/marketing_display_table_screen.ui', self)
 
         self.tableWidget.setColumnWidth(0, 200)
         self.tableWidget.setColumnWidth(1, 150)
