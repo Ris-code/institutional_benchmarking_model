@@ -757,12 +757,12 @@ class display_table_screen(QMainWindow):
 demoApp = QApplication([])
 
 widget = QtWidgets.QStackedWidget()
-first_window = starting_window()
+# first_window = starting_window()
 
 # debugging
 # first_window = screen()
 
-widget.addWidget(first_window)
+# widget.addWidget(first_window)
 widget.showMaximized()
 
-demoApp.exec_()
+# demoApp.exec_()

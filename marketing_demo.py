@@ -52,7 +52,7 @@ class web_traffic(QMainWindow):
         Social_Media_Traffic = int(self.web_traffic_5.text())
 
         print('Website Traffic and Search measure:',
-              Website_Traffic, Organic_Search, Direct_Traffic, Referral_Traffic)
+            Website_Traffic, Organic_Search, Direct_Traffic, Referral_Traffic)
         global counter
         if counter == 0:
             counter += 1
@@ -105,7 +105,7 @@ class new_vs_return_visitors(QMainWindow):
         Average_Session_Duration = float(self.visitors_4.text())
         
         print('New Vs Return Visitors:',
-              New_Visitors, Returning_Visitors, Total_Sessions,  Average_Session_Duration)
+            New_Visitors, Returning_Visitors, Total_Sessions,  Average_Session_Duration)
         global counter
         if counter == 1:
             counter += 1
@@ -157,7 +157,7 @@ class exit_and_bounce_rate(QMainWindow):
         Bounce_Rate = float(self.exit_rate_4.text())
         
         print('Exit and Bounce Rate:',
-              Page_Views,Exit_Rate, Bounce_Rate)
+            Page_Views,Exit_Rate, Bounce_Rate)
         global counter
         if counter == 2:
             counter += 1
@@ -186,7 +186,7 @@ class conversion_cost_per_click(QMainWindow):
         try:
             int(self.cost_per_click_1.text())
             int(self.cost_per_click_2.text())
-          
+        
             self.nextScreen()
         except:
             msg = QMessageBox()
@@ -205,7 +205,7 @@ class conversion_cost_per_click(QMainWindow):
         Cost_per_click = int(self.cost_per_click_2.text())
         
         print('Conversion and cost per click:',
-              Conversions, Cost_per_click)
+            Conversions, Cost_per_click)
         global counter
         if counter == 3:
             counter += 1
@@ -256,7 +256,7 @@ class email_opens_clicks_sents(QMainWindow):
         Email_Sent = float(self.email_open_3.text())
                 
         print('Exit and Bounce Rate:',
-               Email_Open, Email_Clicks, Email_Sent)
+            Email_Open, Email_Clicks, Email_Sent)
         global counter
         if counter == 4:
             counter += 1
@@ -285,7 +285,7 @@ class impression_social_engagements(QMainWindow):
         try:
             int(self.social_reach_1.text())
             int(self.social_reach_2.text())
-          
+        
             self.nextScreen()
         except:
             msg = QMessageBox()
@@ -304,7 +304,7 @@ class impression_social_engagements(QMainWindow):
         Social_Engagement = int(self.social_reach_2.text())
         
         print('Conversion and cost per click:',
-              Impression, Social_Engagement)
+            Impression, Social_Engagement)
         global counter
         if counter == 5:
             counter += 1
@@ -348,14 +348,14 @@ class display_table_screen(QMainWindow):
 demoApp = QApplication([])
 
 widget = QtWidgets.QStackedWidget()
-first_window = web_traffic()
+# first_window = web_traffic()
 
 # debugging
 # first_window = name_of_window()
 
-widget.addWidget(first_window)
+# widget.addWidget(first_window)
 # widget.setFixedHeight(700)
 # widget.setFixedWidth(750)
 widget.showMaximized()
 
-demoApp.exec_()
+# demoApp.exec_()

@@ -476,7 +476,7 @@
       <widget class="QPushButton" name="generateButton">
        <property name="geometry">
         <rect>
-         <x>290</x>
+         <x>240</x>
          <y>10</y>
          <width>300</width>
          <height>75</height>
@@ -513,6 +513,46 @@
         <string>GENERATE OUTPUT</string>
        </property>
       </widget>
+      <widget class="QPushButton" name="returnhome1">
+       <property name="geometry">
+        <rect>
+         <x>570</x>
+         <y>10</y>
+         <width>200</width>
+         <height>75</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="minimumSize">
+        <size>
+         <width>200</width>
+         <height>75</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>200</width>
+         <height>75</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>16</pointsize>
+        </font>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color:rgb(255, 255, 255)</string>
+       </property>
+       <property name="text">
+        <string>Return to home</string>
+       </property>
+      </widget>
      </widget>
     </item>
    </layout>
@@ -523,7 +563,7 @@
      <x>0</x>
      <y>0</y>
      <width>914</width>
-     <height>21</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>
