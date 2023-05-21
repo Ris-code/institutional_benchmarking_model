@@ -136,7 +136,7 @@
         <string notr="true"/>
        </property>
        <property name="text">
-        <string>(Description)</string>
+        <string>Calculates profit earned by an institute in one financial year.</string>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -220,7 +220,7 @@
      <x>0</x>
      <y>0</y>
      <width>914</width>
-     <height>21</height>
+     <height>18</height>
     </rect>
    </property>
   </widget>
