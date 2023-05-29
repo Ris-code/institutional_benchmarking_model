@@ -846,13 +846,13 @@ dictionary = {
 if __name__ == '__main__':
     demoApp = QApplication([])
 
-widget = QtWidgets.QStackedWidget()
-first_window = ability_scaling_window()
+    widget = QtWidgets.QStackedWidget()
+    first_window = ability_scaling_window()
 
     # debugging
     # first_window = name_of_window()
 
-widget.addWidget(first_window)
-widget.showMaximized()
+    widget.addWidget(first_window)
+    widget.showMaximized()
 
-demoApp.exec_()
+    demoApp.exec_()

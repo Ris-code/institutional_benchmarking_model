@@ -47,7 +47,7 @@
       <property name="frameShadow">
        <enum>QFrame::Raised</enum>
       </property>
-      <widget class="QLabel" name="abilityLabel">
+      <widget class="QLabel" name="heading">
        <property name="geometry">
         <rect>
          <x>0</x>

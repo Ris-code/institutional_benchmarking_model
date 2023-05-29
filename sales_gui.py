@@ -20,7 +20,7 @@ sales_param_dict = dict()
 class starting_window(QMainWindow):
     def __init__(self):
         super(starting_window, self).__init__()
-        uic.loadUi('ui_files/sales_module/starting_screen.ui', self)
+        uic.loadUi('ui_files/sales_module/sales_starting_screen.ui', self)
 
         self.nextButton.clicked.connect(self.nextScreen)
 
@@ -734,7 +734,7 @@ class bill_to_book_ratio_screen(QMainWindow):
 class display_table_screen(QMainWindow):
     def __init__(self):
         super(display_table_screen, self).__init__()
-        uic.loadUi('ui_files/sales_module/display_table_screen.ui', self)
+        uic.loadUi('ui_files/sales_module/sales_display_table_screen.ui', self)
 
         self.tableWidget.setColumnWidth(0, 200)
         self.tableWidget.setColumnWidth(1, 150)
@@ -757,13 +757,13 @@ class display_table_screen(QMainWindow):
 if __name__ == '__main__':
     demoApp = QApplication([])
 
-widget = QtWidgets.QStackedWidget()
-# first_window = starting_window()
+    widget = QtWidgets.QStackedWidget()
+    first_window = starting_window()
 
     # debugging
     # first_window = name_of_window()
 
-# widget.addWidget(first_window)
-widget.showMaximized()
+    widget.addWidget(first_window)
+    widget.showMaximized()
 
-# demoApp.exec_()
+    demoApp.exec_()
