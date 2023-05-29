@@ -6,6 +6,7 @@ S_staff => Salary of staff
 N => Total number of students
 C => Institute's expenditure / costs
 y % of C => Fixed cost
+r % => discount rate
  
 '''
 
@@ -24,3 +25,7 @@ def C_salary(N_staff, N_fac, N_stu, S_fac, S_staff):
 # Profit margin per student
 def profit_margin_per_student(R_inst, C, y, N, N_staff, N_fac, N_stu, S_fac, S_staff):
     return R_avg(R_inst, C, y, N) - C_salary(N_staff, N_fac, N_stu, S_fac, S_staff)
+
+# The finsl amount after compounding the principle profit per year
+def apply_discount_rate(r,t,R_inst, C, y, N, N_staff, N_fac, N_stu, S_fac, S_staff):
+    return profit_margin_per_student(R_inst, C, y, N, N_staff, N_fac, N_stu, S_fac, S_staff)*(1+r)**t
