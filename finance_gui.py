@@ -1,6 +1,7 @@
 # MODULE STUFF
 from financeModule import *
-
+import json
+import pickle
 # UI STUFF
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
@@ -31,7 +32,7 @@ class starting_window(QMainWindow):
 
             if (int(self.initial_year.text()) < 1947) \
                 or (int(self.final_year.text()) < 1947) \
-                    or (int(self.initial_year.text()) >= int(self.final_year.text())):
+                    or (int(self.initial_year.text()) > int(self.final_year.text())):
                 raise Exception
 
             self.nextScreen()
@@ -157,8 +158,53 @@ class finance_ratios_screen(QMainWindow):
             float(apply_discount_rate(r,t,R_inst, C, y, N, N_staff, N_fac, N_stu, S_fac, S_staff))
         print(f'Profit Margin Per Student in {self.year}: {ProfitMarginPerStudent}')
 
-        financial_years_dict[self.year] = ProfitMarginPerStudent
+        def load_data(filename):
+            try:
+                with open(filename, 'r') as file:
+                    data = json.load(file)
+            except (FileNotFoundError, json.decoder.JSONDecodeError):
+                data = {}
+            return data
 
+        def save_data(data, filename):
+            with open(filename, 'w') as file:
+                json.dump(data, file)
+
+        # Example usage:
+        data_filename = 'data.json'
+        data = load_data(data_filename)
+        
+        if self.year in data:
+            del data[self.year]
+
+        data[self.year] = ProfitMarginPerStudent
+        # Save the updated dictionary to the file
+        save_data(data, data_filename)
+        # def load_data(filename):
+        #     try:
+        #         with open(filename, 'rb') as file:
+        #             data = pickle.load(file)
+        #     except (FileNotFoundError, pickle.UnpicklingError):
+        #         data = {}
+        #     return data
+
+        # def save_data(data, filename):
+        #     with open(filename, 'wb') as file:
+        #         pickle.dump(data, file)
+
+        # # Example usage:
+        # data_filename = 'data.pkl'
+        # data = load_data(data_filename)
+
+        # # Perform operations on the dictionary
+        # data[self.year] = 'value1'  # Add or update a value
+        # # del data['key2']          # Delete a key-value pair
+
+        # # Save the updated dictionary to the file
+        # save_data(data, data_filename)
+
+
+        financial_years_dict[self.year] = ProfitMarginPerStudent
         widget.setCurrentIndex(widget.currentIndex() + 1)
 
     def backScreen(self):
@@ -179,10 +225,27 @@ class finance_output_screen(QMainWindow):
 
     def load_data(self):   
         idx = 0
-        self.tableWidget.setRowCount(len(financial_years_dict))
-        for param in financial_years_dict.keys():
+
+        def load_data(filename):
+            try:
+                with open(filename, 'r') as file:
+                    data = json.load(file)
+            except (FileNotFoundError, json.decoder.JSONDecodeError):
+                data = {}
+            return data
+
+        # Example usage:
+        data_filename = 'data.json'
+        data = load_data(data_filename)
+        
+        # self.tableWidget.setRowCount(len(financial_years_dict))
+        self.tableWidget.setRowCount(len(data))
+
+        # for param in financial_years_dict.keys():
+        for param in data.keys():
             self.tableWidget.setItem(idx, 0, QtWidgets.QTableWidgetItem(str(param)))
-            self.tableWidget.setItem(idx, 1, QtWidgets.QTableWidgetItem(str(financial_years_dict[param])))
+            # self.tableWidget.setItem(idx, 1, QtWidgets.QTableWidgetItem(str(financial_years_dict[param])))
+            self.tableWidget.setItem(idx, 1, QtWidgets.QTableWidgetItem(str(data[param])))
             idx += 1
 
     def backScreen(self):
