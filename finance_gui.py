@@ -1,7 +1,7 @@
 # MODULE STUFF
 from financeModule import *
 import json
-import pickle
+
 # UI STUFF
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
@@ -11,10 +11,14 @@ QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
 QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
 
 # counter for keeping in check the back and previous screen windows
-finance_counter = -1
+# finance_counter = -1
 
-financial_years_dict = dict()
-years_flag = 0
+# years_flag = 0
+
+# flags to check starting screen inputs change
+prev_initial_year = None
+prev_final_year = None
+
 
 # STARTING SCREEN
 class starting_window(QMainWindow):
@@ -23,6 +27,7 @@ class starting_window(QMainWindow):
         uic.loadUi('ui_files/finance_module/starting_screen.ui', self)
 
         self.nextButton.clicked.connect(self.checkInput)
+        # self.nextButton.clicked.connect(self.nextScreen)
 
     def checkInput(self):
         try:
@@ -46,27 +51,39 @@ class starting_window(QMainWindow):
             msg.exec_()
 
     def nextScreen(self):
-        global initial_year, discount_rate
+        global initial_year, final_year, discount_rate
+        global prev_initial_year, prev_final_year
 
         initial_year = int(self.initial_year.text())
         final_year = int(self.final_year.text())
-        discount_rate = float(self.discount_rate.text())
-
-        global years_flag
-        if years_flag == 0:
-            years_flag = 1
-            for year in range(initial_year, final_year+1):
-                financial_years_dict[year] = 0
+        discount_rate = float(self.discount_rate.text())/100
 
 
-        global finance_counter
-        if finance_counter == -1:
-            finance_counter += 1
+        # global finance_counter
+        # if finance_counter == -1:
+        #     finance_counter += 1
+        #     for year in range(initial_year, final_year+1):
+        #         widget.addWidget(finance_inputs_screen(year))
+        #         widget.addWidget(finance_ratios_screen(year))
+        #     widget.addWidget(finance_output_screen())
+        # widget.setCurrentIndex(widget.currentIndex() + 1)
+
+        if (prev_initial_year == None or prev_final_year == None) or (prev_initial_year != initial_year or prev_final_year != final_year):
+            prev_initial_year = initial_year
+            prev_final_year = final_year
+
+            widget_count = widget.count()
+            for index in range(widget_count - 1, 0, -1):
+                _widget_ = widget.widget(index)
+                widget.removeWidget(_widget_)
+                _widget_.deleteLater()
+            
             for year in range(initial_year, final_year+1):
                 widget.addWidget(finance_inputs_screen(year))
                 widget.addWidget(finance_ratios_screen(year))
             widget.addWidget(finance_output_screen())
-        widget.setCurrentIndex(widget.currentIndex() + 1)
+        
+        widget.setCurrentIndex(1)
 
 
 # FINANCE INPUTS SCREEN
@@ -85,12 +102,12 @@ class finance_inputs_screen(QMainWindow):
             float(self.R_inst.text())
             float(self.S_fac.text())
             float(self.S_staff.text())
-            float(self.N.text())
             float(self.C.text())
             float(self.y.text())
 
             self.nextScreen()
-        except:
+        except Exception as e:
+            print(e)
             msg = QMessageBox()
             msg.setWindowTitle('ERROR')
             msg.setIcon(QMessageBox.Critical)
@@ -106,7 +123,6 @@ class finance_inputs_screen(QMainWindow):
         R_inst = float(self.R_inst.text())
         S_fac = float(self.S_fac.text())
         S_staff = float(self.S_staff.text())
-        N = float(self.N.text())
         C = float(self.C.text())
         y = float(self.y.text())
 
@@ -129,12 +145,13 @@ class finance_ratios_screen(QMainWindow):
 
     def checkInput(self):
         try:
-            float(self.N_fac.text())
-            float(self.N_staff.text())
-            float(self.N_stu.text())
+            int(self.N_fac.text())
+            int(self.N_staff.text())
+            int(self.N_stu.text())
 
             self.nextScreen()
-        except:
+        except Exception as e:
+            print(e)
             msg = QMessageBox()
             msg.setWindowTitle('ERROR')
             msg.setIcon(QMessageBox.Critical)
@@ -147,15 +164,15 @@ class finance_ratios_screen(QMainWindow):
 
     def nextScreen(self):
         global N_fac, N_staff, N_stu, initial_year, discount_rate
-        N_fac = float(self.N_fac.text())
-        N_staff = float(self.N_staff.text())
-        N_stu = float(self.N_stu.text())
+        N_fac = int(self.N_fac.text())
+        N_staff = int(self.N_staff.text())
+        N_stu = int(self.N_stu.text())
 
         r = discount_rate
         t = self.year - initial_year
 
         ProfitMarginPerStudent = \
-            float(apply_discount_rate(r,t,R_inst, C, y, N, N_staff, N_fac, N_stu, S_fac, S_staff))
+            float(apply_discount_rate(r, t, R_inst, C, y, N_staff, N_fac, N_stu, S_fac, S_staff))
         print(f'Profit Margin Per Student in {self.year}: {ProfitMarginPerStudent}')
 
         def load_data(filename):
@@ -170,41 +187,18 @@ class finance_ratios_screen(QMainWindow):
             with open(filename, 'w') as file:
                 json.dump(data, file)
 
-        # Example usage:
         data_filename = 'data.json'
         data = load_data(data_filename)
-        
-        if self.year in data:
-            del data[self.year]
 
-        data[self.year] = ProfitMarginPerStudent
-        # Save the updated dictionary to the file
+        data[f'{self.year}'] = ProfitMarginPerStudent
+
+        data_keys = list(data.keys())
+        data_keys.sort()
+        data = {key: data[key] for key in data_keys}
+
+        # Saving the updated dictionary to data.json
         save_data(data, data_filename)
-        # def load_data(filename):
-        #     try:
-        #         with open(filename, 'rb') as file:
-        #             data = pickle.load(file)
-        #     except (FileNotFoundError, pickle.UnpicklingError):
-        #         data = {}
-        #     return data
 
-        # def save_data(data, filename):
-        #     with open(filename, 'wb') as file:
-        #         pickle.dump(data, file)
-
-        # # Example usage:
-        # data_filename = 'data.pkl'
-        # data = load_data(data_filename)
-
-        # # Perform operations on the dictionary
-        # data[self.year] = 'value1'  # Add or update a value
-        # # del data['key2']          # Delete a key-value pair
-
-        # # Save the updated dictionary to the file
-        # save_data(data, data_filename)
-
-
-        financial_years_dict[self.year] = ProfitMarginPerStudent
         widget.setCurrentIndex(widget.currentIndex() + 1)
 
     def backScreen(self):
@@ -234,17 +228,13 @@ class finance_output_screen(QMainWindow):
                 data = {}
             return data
 
-        # Example usage:
         data_filename = 'data.json'
         data = load_data(data_filename)
         
-        # self.tableWidget.setRowCount(len(financial_years_dict))
         self.tableWidget.setRowCount(len(data))
 
-        # for param in financial_years_dict.keys():
         for param in data.keys():
             self.tableWidget.setItem(idx, 0, QtWidgets.QTableWidgetItem(str(param)))
-            # self.tableWidget.setItem(idx, 1, QtWidgets.QTableWidgetItem(str(financial_years_dict[param])))
             self.tableWidget.setItem(idx, 1, QtWidgets.QTableWidgetItem(str(data[param])))
             idx += 1
 
