@@ -1,8 +1,5 @@
 # MODULE STUFF
-from qualityModule import *
-from managementModule import *
-from riskModule import *
-from effortModule import *
+from modules import *
 
 # UI STUFF
 from PyQt5.QtWidgets import *

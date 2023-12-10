@@ -1,5 +1,5 @@
 # MODULE STUFF
-from salesModule import *
+from modules.sales_module import *
 
 # UI STUFF
 from PyQt5.QtWidgets import *

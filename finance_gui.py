@@ -1,5 +1,5 @@
 # MODULE STUFF
-from financeModule import *
+from modules.finance_module import *
 import json
 
 # UI STUFF

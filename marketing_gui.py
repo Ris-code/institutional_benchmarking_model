@@ -1,5 +1,5 @@
 # MODULE STUFF
-from marketingModule import *
+from modules.marketing_module import *
 
 # UI STUFF
 from PyQt5.QtWidgets import *

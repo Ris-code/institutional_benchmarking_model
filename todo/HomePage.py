@@ -1,10 +1,5 @@
 # MODULE STUFF
-from marketingModule import *
-from qualityModule import *
-from managementModule import *
-from riskModule import *
-from effortModule import *
-from salesModule import *
+from modules import *
 
 # UI STUFF
 import sys
